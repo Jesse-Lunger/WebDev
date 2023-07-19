@@ -35,3 +35,20 @@ export const testImage1 = document.getElementById('testImage1');
 testImage1.src = srcTestimage1;
 
 
+
+const carousel = document.getElementById('carousel');
+for (let i = 1; i <= 5; i++) {
+  import(`../images/jpegs/carousel/testImage${i}.jpg`)
+    .then((image) => {
+      // Handle the imported image here
+      console.log('Imported image:', image.default);
+      // const tmpImg = document.createElement('img');
+      // tmpImg.src = image.default;
+      // carousel.appendChild(tmpImg);
+    })
+    .catch((error) => {
+      // Handle any errors that occur during the import
+      console.error('Error importing image:', error);
+    });
+}
+
