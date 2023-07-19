@@ -2,10 +2,7 @@ import {closeHeader, openHeader, openHeaderCopy, closeHeaderCopy} from './_heade
 import { copyObject } from './_utility';
 // import generateJoke from "./generateJoke";
 import '../styles/style.css';
-
 import * as globals from './_globals';
-
-
 
 
 
@@ -39,12 +36,13 @@ window.addEventListener('resize', async function() {
     });
     headerCopy.style.visibility = 'hidden';
     headerCopy.style.visibility = 'hidden';
-
     // headerCopy.querySelector('#btnHamburger').style.display = 'none';
     headerCopy.classList.remove('open');
-    globals.originalPositions[headerCopy.id][0] = false;
-    openHeader(globals.header);
-    globals.body.classList.remove('noscroll');
+    try {
+      globals.originalPositions[headerCopy.id][0] = false;
+      openHeader(globals.header);
+      globals.body.classList.remove('noscroll');
+    } catch (error) {}
   }
 });
 
@@ -79,3 +77,35 @@ window.onscroll = function() {
 };
 
 
+
+
+const carousel = document.getElementById('carousel');
+const prevArrow = document.getElementById('prevArrow');
+const nextArrow = document.getElementById('nextArrow');
+let currentIndex = 0;
+
+prevArrow.addEventListener('click', () => {
+  if (currentIndex > 0) {
+    currentIndex--;
+    console.log('carousel left');
+
+    scrollToImage(currentIndex);
+  }
+});
+
+nextArrow.addEventListener('click', () => {
+  if (currentIndex < carousel.childElementCount - 1) {
+    currentIndex++;
+    console.log('carousel right');
+    scrollToImage(currentIndex);
+  }
+});
+
+function scrollToImage(index) {
+  const carouselItemWidth = carousel.children[0].offsetWidth;
+  const scrollPosition = carouselItemWidth * index;
+  carousel.scrollTo({
+    left: scrollPosition,
+    behavior: 'smooth',
+  });
+}

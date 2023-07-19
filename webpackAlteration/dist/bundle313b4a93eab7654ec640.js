@@ -22,10 +22,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   originalHeaderTop: () => (/* binding */ originalHeaderTop),
 /* harmony export */   originalPositions: () => (/* binding */ originalPositions),
 /* harmony export */   overlay: () => (/* binding */ overlay),
-/* harmony export */   testImage1: () => (/* binding */ testImage1),
 /* harmony export */   topCont: () => (/* binding */ topCont)
 /* harmony export */ });
-/* harmony import */ var _images_jpegs_carousel_testImage1_jpg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../images/jpegs/carousel/testImage1.jpg */ "./src/images/jpegs/carousel/testImage1.jpg");
+/* harmony import */ var _images_jpgs_carousel_testImage1_jpg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../images/jpgs/carousel/testImage1.jpg */ "./src/images/jpgs/carousel/testImage1.jpg");
+/* harmony import */ var _images_jpgs_carousel_testImage2_jpg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../images/jpgs/carousel/testImage2.jpg */ "./src/images/jpgs/carousel/testImage2.jpg");
+/* harmony import */ var _images_jpgs_carousel_testImage3_jpg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../images/jpgs/carousel/testImage3.jpg */ "./src/images/jpgs/carousel/testImage3.jpg");
+/* harmony import */ var _images_jpgs_carousel_testImage4_jpg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../images/jpgs/carousel/testImage4.jpg */ "./src/images/jpgs/carousel/testImage4.jpg");
+/* harmony import */ var _images_jpgs_carousel_testImage5_jpg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../images/jpgs/carousel/testImage5.jpg */ "./src/images/jpgs/carousel/testImage5.jpg");
 //Initial Empty data Structures
 var headerPositions = {};
 var originalPositions = {};
@@ -62,9 +65,38 @@ headerPositionList.sort(function (a, b) {
 var headerTabs = document.getElementById("headerTabs");
 
 // Images
+var carousel = document.getElementById('carousel');
 
-var testImage1 = document.getElementById('testImage1');
-testImage1.src = _images_jpegs_carousel_testImage1_jpg__WEBPACK_IMPORTED_MODULE_0__;
+
+
+
+
+var CarImages = [_images_jpgs_carousel_testImage1_jpg__WEBPACK_IMPORTED_MODULE_0__, _images_jpgs_carousel_testImage2_jpg__WEBPACK_IMPORTED_MODULE_1__, _images_jpgs_carousel_testImage3_jpg__WEBPACK_IMPORTED_MODULE_2__, _images_jpgs_carousel_testImage4_jpg__WEBPACK_IMPORTED_MODULE_3__, _images_jpgs_carousel_testImage5_jpg__WEBPACK_IMPORTED_MODULE_4__];
+for (var i = 0; i < CarImages.length; i++) {
+  var ImageHandle = document.createElement('img');
+  ImageHandle.src = CarImages[i];
+  ImageHandle.classList.add('carouselImg');
+  carousel.appendChild(ImageHandle);
+}
+
+// image1.src = srcImage1;
+// carousel.appendChild(image1);
+
+// export const testImage1 = document.getElementById('testImage1');
+// testImage1.src = srcImage1;
+
+// for (let i = 1; i <= 5; i++) {
+//   const imagePath = `../images/jpegs/carousel/testImage${i}.jpg`;
+//   import(imagePath);
+//   // import(imagePath)
+//   //   .then((image) => {
+//   //     console.log('Imported image:', image.default);
+//   //   })
+//   //   .catch((error) => {
+//   //     // Handle any errors that occur during the import
+//   //     console.error('Error importing image:', error);
+//   //   });
+// }
 
 /***/ }),
 
@@ -1041,13 +1073,53 @@ module.exports = styleTagTransform;
 
 /***/ }),
 
-/***/ "./src/images/jpegs/carousel/testImage1.jpg":
-/*!**************************************************!*\
-  !*** ./src/images/jpegs/carousel/testImage1.jpg ***!
-  \**************************************************/
+/***/ "./src/images/jpgs/carousel/testImage1.jpg":
+/*!*************************************************!*\
+  !*** ./src/images/jpgs/carousel/testImage1.jpg ***!
+  \*************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 module.exports = __webpack_require__.p + "testImage1.jpg";
+
+/***/ }),
+
+/***/ "./src/images/jpgs/carousel/testImage2.jpg":
+/*!*************************************************!*\
+  !*** ./src/images/jpgs/carousel/testImage2.jpg ***!
+  \*************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "testImage2.jpg";
+
+/***/ }),
+
+/***/ "./src/images/jpgs/carousel/testImage3.jpg":
+/*!*************************************************!*\
+  !*** ./src/images/jpgs/carousel/testImage3.jpg ***!
+  \*************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "testImage3.jpg";
+
+/***/ }),
+
+/***/ "./src/images/jpgs/carousel/testImage4.jpg":
+/*!*************************************************!*\
+  !*** ./src/images/jpgs/carousel/testImage4.jpg ***!
+  \*************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "testImage4.jpg";
+
+/***/ }),
+
+/***/ "./src/images/jpgs/carousel/testImage5.jpg":
+/*!*************************************************!*\
+  !*** ./src/images/jpgs/carousel/testImage5.jpg ***!
+  \*************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "testImage5.jpg";
 
 /***/ })
 
@@ -1243,12 +1315,13 @@ window.addEventListener('resize', /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_
           });
           headerCopy.style.visibility = 'hidden';
           headerCopy.style.visibility = 'hidden';
-
           // headerCopy.querySelector('#btnHamburger').style.display = 'none';
           headerCopy.classList.remove('open');
-          _globals__WEBPACK_IMPORTED_MODULE_3__.originalPositions[headerCopy.id][0] = false;
-          (0,_headerFunctions__WEBPACK_IMPORTED_MODULE_0__.openHeader)(_globals__WEBPACK_IMPORTED_MODULE_3__.header);
-          _globals__WEBPACK_IMPORTED_MODULE_3__.body.classList.remove('noscroll');
+          try {
+            _globals__WEBPACK_IMPORTED_MODULE_3__.originalPositions[headerCopy.id][0] = false;
+            (0,_headerFunctions__WEBPACK_IMPORTED_MODULE_0__.openHeader)(_globals__WEBPACK_IMPORTED_MODULE_3__.header);
+            _globals__WEBPACK_IMPORTED_MODULE_3__.body.classList.remove('noscroll');
+          } catch (error) {}
         }
       case 1:
       case "end":
@@ -1285,4 +1358,4 @@ window.onscroll = function () {
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle8d6e8df8697e7bee2eaa.js.map
+//# sourceMappingURL=bundle313b4a93eab7654ec640.js.map

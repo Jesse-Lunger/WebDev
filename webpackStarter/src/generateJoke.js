@@ -1,4 +1,6 @@
 import axios from 'axios';
+import testImage1 from './images/jpgs/testImage1.jpg';
+
 
 
 function generateJoke() {

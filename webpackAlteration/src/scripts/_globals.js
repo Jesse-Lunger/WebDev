@@ -30,25 +30,54 @@ headerPositionList.sort((a, b) => a - b);
 export const headerTabs = document.getElementById("headerTabs");
 
 // Images
-import srcTestimage1 from '../images/jpegs/carousel/testImage1.jpg';
-export const testImage1 = document.getElementById('testImage1');
-testImage1.src = srcTestimage1;
-
-
-
 const carousel = document.getElementById('carousel');
-for (let i = 1; i <= 5; i++) {
-  import(`../images/jpegs/carousel/testImage${i}.jpg`)
-    .then((image) => {
-      // Handle the imported image here
-      console.log('Imported image:', image.default);
-      // const tmpImg = document.createElement('img');
-      // tmpImg.src = image.default;
-      // carousel.appendChild(tmpImg);
-    })
-    .catch((error) => {
-      // Handle any errors that occur during the import
-      console.error('Error importing image:', error);
-    });
+import srcImage1 from '../images/jpgs/carousel/testImage1.jpg';
+import srcImage2 from '../images/jpgs/carousel/testImage2.jpg';
+import srcImage3 from '../images/jpgs/carousel/testImage3.jpg';
+import srcImage4 from '../images/jpgs/carousel/testImage4.jpg';
+import srcImage5 from '../images/jpgs/carousel/testImage5.jpg';
+
+const carImages = [srcImage1, srcImage2, srcImage3, srcImage4, srcImage5];
+for (let i = 0; i < carImages.length; i++){
+  const carItem = document.createElement('div');
+  const imageTittle = document.createElement('h3');
+  const ImageHandle = document.createElement('img');
+
+  carItem.classList.add('carouselItem')
+
+  const imageTitleText = `Title ${i + 1}`; // Using template literal to include the value of 'i'
+  imageTittle.textContent = imageTitleText;
+  imageTittle.classList.add('carouselHeader')
+
+  ImageHandle.src = carImages[i];
+  ImageHandle.classList.add('carouselImg');
+
+  carItem.appendChild(imageTittle);
+  carItem.appendChild(ImageHandle);
+  carousel.appendChild(carItem);
+
 }
+
+
+// image1.src = srcImage1;
+// carousel.appendChild(image1);
+
+// export const testImage1 = document.getElementById('testImage1');
+// testImage1.src = srcImage1;
+
+
+
+// for (let i = 1; i <= 5; i++) {
+//   const imagePath = `../images/jpegs/carousel/testImage${i}.jpg`;
+//   import(imagePath);
+//   // import(imagePath)
+//   //   .then((image) => {
+//   //     console.log('Imported image:', image.default);
+//   //   })
+//   //   .catch((error) => {
+//   //     // Handle any errors that occur during the import
+//   //     console.error('Error importing image:', error);
+//   //   });
+// }
+
 

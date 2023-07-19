@@ -12,7 +12,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+/* harmony import */ var _images_jpgs_testImage1_jpg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./images/jpgs/testImage1.jpg */ "./src/images/jpgs/testImage1.jpg");
+
 
 function generateJoke() {
   var config = {
@@ -20,7 +22,7 @@ function generateJoke() {
       Accept: 'application/json'
     }
   };
-  axios__WEBPACK_IMPORTED_MODULE_0__["default"].get('https://icanhazdadjoke.com', config).then(function (res) {
+  axios__WEBPACK_IMPORTED_MODULE_1__["default"].get('https://icanhazdadjoke.com', config).then(function (res) {
     document.getElementById('joke').innerHTML = res.data.joke;
   });
 }
@@ -556,10 +558,20 @@ module.exports = styleTagTransform;
 
 /***/ }),
 
-/***/ "./src/assets/laughing.svg":
-/*!*********************************!*\
-  !*** ./src/assets/laughing.svg ***!
-  \*********************************/
+/***/ "./src/images/jpgs/testImage1.jpg":
+/*!****************************************!*\
+  !*** ./src/images/jpgs/testImage1.jpg ***!
+  \****************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "testImage1.jpg";
+
+/***/ }),
+
+/***/ "./src/images/svgs/laughing.svg":
+/*!**************************************!*\
+  !*** ./src/images/svgs/laughing.svg ***!
+  \**************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 module.exports = __webpack_require__.p + "laughing.svg";
@@ -4719,12 +4731,16 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _generateJoke__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./generateJoke */ "./src/generateJoke.js");
 /* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styles/main.scss */ "./src/styles/main.scss");
-/* harmony import */ var _assets_laughing_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./assets/laughing.svg */ "./src/assets/laughing.svg");
+/* harmony import */ var _images_svgs_laughing_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./images/svgs/laughing.svg */ "./src/images/svgs/laughing.svg");
+/* harmony import */ var _images_jpgs_testImage1_jpg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./images/jpgs/testImage1.jpg */ "./src/images/jpgs/testImage1.jpg");
 
 
 
-var laughImg = document.getElementById('laughImg');
-laughImg.src = _assets_laughing_svg__WEBPACK_IMPORTED_MODULE_2__;
+
+
+// const laughImg = document.getElementById('laughImg');
+// laughImg.src = laughing;
+
 var jokeBtn = document.getElementById('jokeBtn');
 jokeBtn.addEventListener('click', _generateJoke__WEBPACK_IMPORTED_MODULE_0__["default"]);
 (0,_generateJoke__WEBPACK_IMPORTED_MODULE_0__["default"])();
@@ -4732,4 +4748,4 @@ jokeBtn.addEventListener('click', _generateJoke__WEBPACK_IMPORTED_MODULE_0__["de
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle2dec8a030d85af16a93b.js.map
+//# sourceMappingURL=bundle47346d3265a4ec547dce.js.map

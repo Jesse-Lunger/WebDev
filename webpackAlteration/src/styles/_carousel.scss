@@ -1,40 +1,39 @@
-.carousel {
-    position: relative;
+
+
+  
+  .carouselItem {
+    flex: 0 0 calc(100% / 3); /* Set the width to one-third of the container */
+    padding: 10px; /* Add spacing between items */
+  }
+  
+  .carouselHeader {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px; /* Add some space between header and image */
+  }
+  
+  .carouselImg {
     width: 100%;
-    /* Add other desired styles for the carousel container */
+    height: auto;
   }
   
-  .carousel-images {
-    display: flex;
-    justify-content: space-between;
-    transition: transform 0.5s ease-in-out;
-    /* Add other desired styles for the image container */
-  }
-  
-  .carousel-images img {
-    width: 33.33%; /* Adjust the width based on the desired number of visible images */
-    /* Add other desired styles for the images */
-  }
-  
-  .carousel-arrows {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    /* Add other desired styles for the arrows container */
-  }
-  
-  .carousel-arrow {
-    background: none;
-    border: none;
-    font-size: 24px;
-    /* Add other desired styles for the arrows */
-  }
-  
-  .carousel-prev {
-    /* Add styles for the previous arrow */
-  }
-  
-  .carousel-next {
-    /* Add styles for the next arrow */
-  }
+
+.carouselArrows {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-top: 10px; /* Add some spacing between carousel and arrows */
+}
+
+.carouselArrows button {
+font-size: 24px;
+background: transparent;
+border: none;
+cursor: pointer;
+}
+
+.carouselArrows button:hover {
+color: #007bff; /* Change color on hover (optional) */
+}
   

@@ -1,6 +1,7 @@
 import generateJoke from "./generateJoke";
 import './styles/main.scss';
-import laughing from './assets/laughing.svg';
+import laughing from './images/svgs/laughing.svg';
+
 
 
 const laughImg = document.getElementById('laughImg');
