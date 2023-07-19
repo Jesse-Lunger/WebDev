@@ -5,9 +5,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     mode: 'development',
-    entry: path.resolve(__dirname, 'src/index.js'),
+    entry: path.resolve(__dirname, 'src/scripts/index.js'),
     entry: {
-        bundle: path.resolve(__dirname, 'src/index.js')
+        bundle: path.resolve(__dirname, 'src/scripts/index.js')
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -35,7 +35,7 @@ module.exports = {
         rules: [
             {
                 // general expersion so that every file with this flag uses these loaders
-                test:/\.scss$/,
+                test:/\.(scss|css)$/i,
                 use: [
                     'style-loader',
                     'css-loader',
