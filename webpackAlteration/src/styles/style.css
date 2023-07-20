@@ -80,6 +80,7 @@ p {
 .container {
   max-width: 75rem;
   margin: 0 auto;
+  overflow: hidden;
 }
 .container--pHeader {
   padding-right: 6rem;
@@ -257,8 +258,20 @@ p {
 }
 
 .carouselItem {
-  flex: 0 0 33.3333333333%; /* Set the width to one-third of the container */
+  flex: 0 0 100%;
   padding: 10px; /* Add spacing between items */
+}
+@media (min-width: 40em) {
+  .carouselItem {
+    flex: 0 0 33.3333333333%; /* Set the width to one-third of the container */
+    padding: 10px; /* Add spacing between items */
+  }
+}
+@media (min-width: 64em) {
+  .carouselItem {
+    flex: 0 0 20%; /* Set the width to one-third of the container */
+    padding: 10px; /* Add spacing between items */
+  }
 }
 
 .carouselHeader {
@@ -266,11 +279,14 @@ p {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 5px; /* Add some space between header and image */
+  overflow-x: auto;
 }
 
 .carouselImg {
-  width: 100%;
+  display: flex;
+  width: 100%; /* Take up the full width of the parent container */
   height: auto;
+  overflow-x: auto;
 }
 
 .carouselArrows {

@@ -13,6 +13,10 @@ export const topCont = document.getElementById('headerTop');
 export const originalHeaderTop = header.getBoundingClientRect().top;
 export const navLinks = document.querySelectorAll('.tabs a');
 
+export const carousel = document.getElementById('carousel');
+export const prevArrow = document.getElementById('prevArrow');
+export const nextArrow = document.getElementById('nextArrow');
+
 // initialized data structures
 navLinks.forEach(link => {
     console.log(link.getAttribute('href'));
@@ -30,7 +34,6 @@ headerPositionList.sort((a, b) => a - b);
 export const headerTabs = document.getElementById("headerTabs");
 
 // Images
-const carousel = document.getElementById('carousel');
 import srcImage1 from '../images/jpgs/carousel/testImage1.jpg';
 import srcImage2 from '../images/jpgs/carousel/testImage2.jpg';
 import srcImage3 from '../images/jpgs/carousel/testImage3.jpg';
