@@ -1,5 +1,4 @@
-import {closeHeader, openHeader, openHeaderCopy, closeHeaderCopy} from './_headerFunctions';
-import { copyObject } from './_utility';
+import * as hdrFuncs from './_headerFunctions';
 // import generateJoke from "./generateJoke";
 import '../styles/style.css';
 import * as globals from './_globals';
@@ -7,43 +6,14 @@ import * as carFun from './_carousel';
 
 
 
-const headerCopy = copyObject(globals.header);
-headerCopy.querySelector('#btnHamburger').id = 'btnHamburgerCopy';
-headerCopy.classList.add('disable-transition');
+hdrFuncs.initializeHeaderHamburgerBtn()
+console.log(globals.largeBreakpoint);
 
-globals.header.addEventListener('click', async function(event){
-  event.preventDefault();
-  globals.body.classList.add('noscroll');
-  console.log('header clicked');
-  await closeHeader(globals.header);
-  await openHeaderCopy(headerCopy, globals.originalPositions, globals.header);
-});
-
-headerCopy.addEventListener('click', async function(event) {
-  event.preventDefault();
-  console.log('Hamburger menu clicked');
-  await closeHeaderCopy(headerCopy,  globals.originalPositions);
-  await openHeader(globals.header);
-  globals.body.classList.remove('noscroll');
-});
 
 window.addEventListener('resize', async function() {
-  if (window.innerWidth >= 1000) {  
-    headerCopy.classList.add('disable-transition');
-    const fadeElemsCopy = headerCopy.querySelectorAll('.has-fade');
-    fadeElemsCopy.forEach(function(element) {
-      element.classList.add('fade-out');
-      element.classList.remove('fade-in');
-    });
-    headerCopy.style.visibility = 'hidden';
-    headerCopy.style.visibility = 'hidden';
-    // headerCopy.querySelector('#btnHamburger').style.display = 'none';
-    headerCopy.classList.remove('open');
-    try {
-      globals.originalPositions[headerCopy.id][0] = false;
-      openHeader(globals.header);
-      globals.body.classList.remove('noscroll');
-    } catch (error) {}
+  if (window.innerWidth >= globals.largeBreakpoint) {  
+    hdrFuncs.closeHeaderCopy(globals.headerCopy, globals.originalPositions);
+    hdrFuncs.openHeader(globals.header)
   }
 });
 
@@ -79,11 +49,25 @@ window.onscroll = function() {
 
 
 
-let currentIndex = 0;
+// carFun.initializeCarArrows(globals.prevArrow, globals.nextArrow, currentIndex, visibleImages, globals.carousel);
 
-carFun.initializeCarArrows(globals.prevArrow, globals.nextArrow, currentIndex, globals.carousel);
+// globals.mediumBreakpoint
+// console.log(mediumBreakpoint); // "40em"
+// console.log(largeBreakpoint); // "64em"
+// console.log(xlargeBreakpoint); // "87.5em"
 
 
+// const isMediumBreakPoint = window.matchMedia(`(min-width: ${$breakpoint-up["medium"]})`).matches;
+// const isLargeBreakPoint = window.matchMedia(`(min-width: ${$breakpoint-up["large"]})`).matches;
 
+// if (isMediumBreakPoint) {
+//   currentIndex = 0;
+//   visibleImages = 3; // Set the variable value to 1 for the medium breakpoint
+// }
+
+// if (isMediumBreakPoint && isLargeBreakPoint) {
+//   currentIndex = 0;
+//   visibleImages = 5; // Set the variable value to 1 for the medium breakpoint
+// }
 
 

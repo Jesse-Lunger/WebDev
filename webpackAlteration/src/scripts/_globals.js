@@ -1,3 +1,5 @@
+import { copyObject } from './_utility';
+
 //Initial Empty data Structures
 export const headerPositions = {};
 export const originalPositions = {};
@@ -16,6 +18,17 @@ export const navLinks = document.querySelectorAll('.tabs a');
 export const carousel = document.getElementById('carousel');
 export const prevArrow = document.getElementById('prevArrow');
 export const nextArrow = document.getElementById('nextArrow');
+
+export const mediumBreakpoint = getComputedStyle(document.documentElement).getPropertyValue('--medium-breakpoint-up');
+export const largeBreakpoint = getComputedStyle(document.documentElement).getPropertyValue('--large-breakpoint-up');
+export const xlargeBreakpoint = getComputedStyle(document.documentElement).getPropertyValue('--xlarge-breakpoint-up');
+
+console.log(mediumBreakpoint);
+
+export const headerCopy = copyObject(header);
+headerCopy.querySelector('#btnHamburger').id = 'btnHamburgerCopy';
+headerCopy.classList.add('disable-transition');
+
 
 // initialized data structures
 navLinks.forEach(link => {

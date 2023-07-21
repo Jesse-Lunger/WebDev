@@ -1,5 +1,5 @@
 
-export function initializeCarArrows(prevArrow, nextArrow, currentIndex, carousel){
+export function initializeCarArrows(prevArrow, nextArrow, currentIndex, visibleImages, carousel){
     prevArrow.addEventListener('click', () => {
       if (currentIndex > 0) {
         currentIndex--;
@@ -9,7 +9,7 @@ export function initializeCarArrows(prevArrow, nextArrow, currentIndex, carousel
       }
     });
     nextArrow.addEventListener('click', () => {
-      if (currentIndex < carousel.childElementCount - 3) {
+      if (currentIndex < carousel.childElementCount - visibleImages) {
         currentIndex++;
         console.log(currentIndex);
         console.log('carousel right');

@@ -2,6 +2,44 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/scripts/_carousel.js":
+/*!**********************************!*\
+  !*** ./src/scripts/_carousel.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   initializeCarArrows: () => (/* binding */ initializeCarArrows)
+/* harmony export */ });
+function initializeCarArrows(prevArrow, nextArrow, currentIndex, visibleImages, carousel) {
+  prevArrow.addEventListener('click', function () {
+    if (currentIndex > 0) {
+      currentIndex--;
+      console.log('carousel left');
+      scrollToImage(currentIndex, carousel);
+    }
+  });
+  nextArrow.addEventListener('click', function () {
+    if (currentIndex < carousel.childElementCount - visibleImages) {
+      currentIndex++;
+      console.log(currentIndex);
+      console.log('carousel right');
+      scrollToImage(currentIndex, carousel);
+    }
+  });
+}
+function scrollToImage(index, carousel) {
+  var carouselItemWidth = carousel.children[0].offsetWidth;
+  var scrollPosition = carouselItemWidth * index;
+  carousel.scrollTo({
+    left: scrollPosition,
+    behavior: 'smooth'
+  });
+}
+
+/***/ }),
+
 /***/ "./src/scripts/_globals.js":
 /*!*********************************!*\
   !*** ./src/scripts/_globals.js ***!
@@ -12,6 +50,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   body: () => (/* binding */ body),
 /* harmony export */   btnHamburger: () => (/* binding */ btnHamburger),
+/* harmony export */   carousel: () => (/* binding */ carousel),
 /* harmony export */   content: () => (/* binding */ content),
 /* harmony export */   fadeElems: () => (/* binding */ fadeElems),
 /* harmony export */   header: () => (/* binding */ header),
@@ -19,9 +58,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   headerPositions: () => (/* binding */ headerPositions),
 /* harmony export */   headerTabs: () => (/* binding */ headerTabs),
 /* harmony export */   navLinks: () => (/* binding */ navLinks),
+/* harmony export */   nextArrow: () => (/* binding */ nextArrow),
 /* harmony export */   originalHeaderTop: () => (/* binding */ originalHeaderTop),
 /* harmony export */   originalPositions: () => (/* binding */ originalPositions),
 /* harmony export */   overlay: () => (/* binding */ overlay),
+/* harmony export */   prevArrow: () => (/* binding */ prevArrow),
 /* harmony export */   topCont: () => (/* binding */ topCont)
 /* harmony export */ });
 /* harmony import */ var _images_jpgs_carousel_testImage1_jpg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../images/jpgs/carousel/testImage1.jpg */ "./src/images/jpgs/carousel/testImage1.jpg");
@@ -43,6 +84,9 @@ var content = document.querySelector('.content');
 var topCont = document.getElementById('headerTop');
 var originalHeaderTop = header.getBoundingClientRect().top;
 var navLinks = document.querySelectorAll('.tabs a');
+var carousel = document.getElementById('carousel');
+var prevArrow = document.getElementById('prevArrow');
+var nextArrow = document.getElementById('nextArrow');
 
 // initialized data structures
 navLinks.forEach(function (link) {
@@ -65,18 +109,25 @@ headerPositionList.sort(function (a, b) {
 var headerTabs = document.getElementById("headerTabs");
 
 // Images
-var carousel = document.getElementById('carousel');
 
 
 
 
 
-var CarImages = [_images_jpgs_carousel_testImage1_jpg__WEBPACK_IMPORTED_MODULE_0__, _images_jpgs_carousel_testImage2_jpg__WEBPACK_IMPORTED_MODULE_1__, _images_jpgs_carousel_testImage3_jpg__WEBPACK_IMPORTED_MODULE_2__, _images_jpgs_carousel_testImage4_jpg__WEBPACK_IMPORTED_MODULE_3__, _images_jpgs_carousel_testImage5_jpg__WEBPACK_IMPORTED_MODULE_4__];
-for (var i = 0; i < CarImages.length; i++) {
+var carImages = [_images_jpgs_carousel_testImage1_jpg__WEBPACK_IMPORTED_MODULE_0__, _images_jpgs_carousel_testImage2_jpg__WEBPACK_IMPORTED_MODULE_1__, _images_jpgs_carousel_testImage3_jpg__WEBPACK_IMPORTED_MODULE_2__, _images_jpgs_carousel_testImage4_jpg__WEBPACK_IMPORTED_MODULE_3__, _images_jpgs_carousel_testImage5_jpg__WEBPACK_IMPORTED_MODULE_4__];
+for (var i = 0; i < carImages.length; i++) {
+  var carItem = document.createElement('div');
+  var imageTittle = document.createElement('h3');
   var ImageHandle = document.createElement('img');
-  ImageHandle.src = CarImages[i];
+  carItem.classList.add('carouselItem');
+  var imageTitleText = "Title ".concat(i + 1); // Using template literal to include the value of 'i'
+  imageTittle.textContent = imageTitleText;
+  imageTittle.classList.add('carouselHeader');
+  ImageHandle.src = carImages[i];
   ImageHandle.classList.add('carouselImg');
-  carousel.appendChild(ImageHandle);
+  carItem.appendChild(imageTittle);
+  carItem.appendChild(ImageHandle);
+  carousel.appendChild(carItem);
 }
 
 // image1.src = srcImage1;
@@ -364,7 +415,16 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `.has-fade {
+___CSS_LOADER_EXPORT___.push([module.id, `:root {
+  --medium-breakpoint-up: 40em;
+  --large-breakpoint-up: 64em;
+  --xlarge-breakpoint-up: 87.5em;
+  --small-breakpoint-down: 39.9375em;
+  --medium-breakpoint-down: 63.9375em;
+  --large-breakpoint-down: 87.4375em;
+}
+
+.has-fade {
   opacity: 0;
   visibility: hidden;
 }
@@ -430,7 +490,7 @@ body {
   overflow-x: hidden;
 }
 
-@media (min-width: 64em) {
+@media (min-width: var(--large-breakpoint-up)) {
   body {
     font-size: 1.125rem;
   }
@@ -447,6 +507,7 @@ p {
 .container {
   max-width: 75rem;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 .container--pHeader {
@@ -456,7 +517,7 @@ p {
   padding-bottom: 2rem;
 }
 
-@media (min-width: 64em) {
+@media (min-width: var(--large-breakpoint-up)) {
   .container--pHeader {
     padding-right: 6rem;
     padding-left: 6rem;
@@ -470,7 +531,7 @@ p {
   padding-left: 6rem;
 }
 
-@media (min-width: 64em) {
+@media (min-width: var(--large-breakpoint-up)) {
   .container--pContent {
     padding-right: 6rem;
     padding-left: 6rem;
@@ -492,12 +553,23 @@ p {
   justify-content: center;
 }
 
-@media (max-width: 63.9375em) {
+.btn {
+  background-color: #2fa8cc;
+  color: #f4f4f4;
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1);
+  padding: 14px 40px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+@media (max-width: var(--medium-breakpoint-down)) {
   .hide-for-mobile {
     display: none;
   }
 }
-@media (min-width: 64em) {
+@media (min-width: var(--large-breakpoint-up)) {
   .hide-for-desktop {
     display: none;
   }
@@ -534,7 +606,7 @@ p {
   height: 4rem;
 }
 
-@media (min-width: 64em) {
+@media (min-width: var(--large-breakpoint-up)) {
   .header {
     height: 5rem;
   }
@@ -626,7 +698,57 @@ p {
 
 .content {
   padding: 1rem;
-} `, "",{"version":3,"sources":["webpack://./src/styles/style.css"],"names":[],"mappings":"AAAA;EACE,UAAA;EACA,kBAAA;AACF;;AAEA;EACE;IACE,UAAA;IACA,kBAAA;EACF;EACA;IACE,UAAA;IACA,mBAAA;EACF;AACF;AACA;EACE,6CAAA;AACF;;AAEA;EACE;IACE,UAAA;IACA,mBAAA;EACF;EACA;IACE,UAAA;IACA,kBAAA;EACF;AACF;AACA;EACE,8CAAA;AACF;;AAEA;EACE;IACE,4BAAA;EACF;EACA;IACE,wBAAA;EACF;AACF;AACA;EACE,+CAAA;AACF;;AAEA;EACE,eAAA;EACA,sBAAA;AACF;;AAEA;;;EAGE,mBAAA;AACF;;AAEA;EACE,SAAA;EACA,UAAA;EACA,sCAAA;EACA,mBAAA;EACA,gBAAA;EACA,gBAAA;EACA,kBAAA;AACF;;AACA;EACE;IACE,mBAAA;EAEF;AACF;AAAA;EACE,gBAAA;AAEF;;AACA;EACE,gBAAA;EACA,sBAAA;AAEF;;AACA;EACE,gBAAA;EACA,cAAA;AAEF;;AAAA;EACE,mBAAA;EACA,kBAAA;EACA,iBAAA;EACA,oBAAA;AAGF;;AADA;EACE;IACE,mBAAA;IACA,kBAAA;IACA,mBAAA;IACA,sBAAA;EAIF;AACF;AAFA;EACE,mBAAA;EACA,oBAAA;EACA,kBAAA;AAIF;;AAFA;EACE;IACE,mBAAA;IACA,kBAAA;EAKF;AACF;AAFA;EACE,aAAA;AAIF;;AAFA;EACE,8BAAA;AAKF;;AAHA;EACE,mBAAA;AAMF;;AAJA;EACE,uBAAA;AAOF;;AAJA;EACE;IACE,aAAA;EAOF;AACF;AAJA;EACE;IACE,aAAA;EAMF;AACF;AAHA;EACE,aAAA;AAKF;;AAFA;EACE,cAAA;AAKF;;AAFA;EACE,sBAAA;EACA,cAAA;EACA,iCAAA;EACA,YAAA;EACA,eAAA;EACA,QAAA;EACA,WAAA;AAKF;;AAFA;EACE,yBAAA;EACA,aAAA;EACA,kBAAA;AAKF;;AAFA;EACE,UAAA;EACA,WAAA;EACA,mCAAA;EACA,iCAAA;EACA,YAAA;AAKF;;AAHA;EACE;IACE,YAAA;EAMF;AACF;AAJA;EACE,WAAA;AAMF;;AAJA;EACE,wBAAA;AAOF;;AALA;EACE,UAAA;AAQF;;AANA;EACE,yBAAA;AASF;;AAPA;EACE,WAAA;AAUF;;AARA;EACE,uBAAA;AAWF;;AATA;EACE,UAAA;AAYF;;AAVA;EACE,uBAAA;AAaF;;AAXA;EACE,UAAA;EACA,eAAA;EACA,QAAA;EACA,UAAA;EACA,WAAA;EACA,SAAA;EACA,kEAAA;AAcF;;AAZA;EACE,eAAA;EACA,wBAAA;EACA,QAAA;EACA,SAAA;EACA,2BAAA;EACA,uBAAA;EACA,kEAAA;EACA,kBAAA;EACA,iBAAA;EACA,kBAAA;AAeF;;AAbA;EACE,cAAA;EACA,iBAAA;EACA,yBAAA;EACA,kBAAA;AAgBF;;AAdA;EACE,cAAA;EACA,WAAA;EACA,WAAA;EACA,qBAAA;EACA,iCAAA;EACA,yBAAA;AAiBF;;AAfA;EACE,kBAAA;AAkBF;;AAfA;EACE,2BAAA;AAkBF;;AAfA;EACE,gBAAA;EACA,MAAA;EACA,WAAA;AAkBF;;AAfA;EACE,aAAA;AAkBF","sourcesContent":[".has-fade {\n  opacity: 0;\n  visibility: hidden;\n}\n\n@keyframes fade-in {\n  from {\n    opacity: 0;\n    visibility: hidden;\n  }\n  to {\n    opacity: 1;\n    visibility: visible;\n  }\n}\n.fade-in {\n  animation: fade-in 200ms ease-in-out forwards;\n}\n\n@keyframes fade-out {\n  from {\n    opacity: 1;\n    visibility: visible;\n  }\n  to {\n    opacity: 0;\n    visibility: hidden;\n  }\n}\n.fade-out {\n  animation: fade-out 200ms ease-in-out forwards;\n}\n\n@keyframes slide-in {\n  from {\n    transform: translateY(-100%);\n  }\n  to {\n    transform: translateY(0);\n  }\n}\n.slide-in {\n  animation: slide-in 10secs ease-in-out forwards;\n}\n\nhtml {\n  font-size: 100%;\n  box-sizing: border-box;\n}\n\n*,\n*::before,\n*::after {\n  box-sizing: inherit;\n}\n\nbody {\n  margin: 0;\n  padding: 0;\n  font-family: \"Public Sans\", sans-serif;\n  font-size: 0.875rem;\n  font-weight: 300;\n  line-height: 1.3;\n  overflow-x: hidden;\n}\n@media (min-width: 64em) {\n  body {\n    font-size: 1.125rem;\n  }\n}\nbody.noscroll {\n  overflow: hidden;\n}\n\np {\n  line-height: 1.5;\n  margin-bottom: 2.25rem;\n}\n\n.container {\n  max-width: 75rem;\n  margin: 0 auto;\n}\n.container--pHeader {\n  padding-right: 6rem;\n  padding-left: 6rem;\n  padding-top: 1rem;\n  padding-bottom: 2rem;\n}\n@media (min-width: 64em) {\n  .container--pHeader {\n    padding-right: 6rem;\n    padding-left: 6rem;\n    padding-top: 1.5rem;\n    padding-bottom: 2.5rem;\n  }\n}\n.container--pContent {\n  padding-right: 6rem;\n  padding-bottom: 2rem;\n  padding-left: 6rem;\n}\n@media (min-width: 64em) {\n  .container--pContent {\n    padding-right: 6rem;\n    padding-left: 6rem;\n  }\n}\n\n.flex {\n  display: flex;\n}\n.flex-jc-sb {\n  justify-content: space-between;\n}\n.flex-ai-c {\n  align-items: center;\n}\n.flex-jc-c {\n  justify-content: center;\n}\n\n@media (max-width: 63.9375em) {\n  .hide-for-mobile {\n    display: none;\n  }\n}\n\n@media (min-width: 64em) {\n  .hide-for-desktop {\n    display: none;\n  }\n}\n\n.hidden {\n  display: none;\n}\n\n.visible {\n  display: block;\n}\n\n.tabs {\n  background-color: gray;\n  display: block;\n  transition: all 500ms ease-in-out;\n  height: 4rem;\n  position: fixed;\n  top: 0px;\n  width: 100%;\n}\n\n.top-container {\n  background-color: #f1f1f1;\n  padding: 1rem;\n  text-align: center;\n}\n\n.header {\n  z-index: 1;\n  width: 100%;\n  background-color: hsl(233, 8%, 62%);\n  transition: all 500ms ease-in-out;\n  height: 4rem;\n}\n@media (min-width: 64em) {\n  .header {\n    height: 5rem;\n  }\n}\n.header.open {\n  width: 100%;\n}\n.header.open .header__toggle > span:first-child {\n  transform: rotate(42deg);\n}\n.header.open .header__toggle > span:nth-child(2) {\n  opacity: 0;\n}\n.header.open .header__toggle > span:last-child {\n  transform: rotate(-42deg);\n}\n.header.close {\n  width: 100%;\n}\n.header.close .header__toggle > span:first-child {\n  transform: rotate(0deg);\n}\n.header.close .header__toggle > span:nth-child(2) {\n  opacity: 1;\n}\n.header.close .header__toggle > span:last-child {\n  transform: rotate(0deg);\n}\n.header .overlay {\n  opacity: 0;\n  position: fixed;\n  top: 0px;\n  right: 0px;\n  bottom: 0px;\n  left: 0px;\n  background-image: linear-gradient(hsl(233, 26%, 24%), transparent);\n}\n.header__menu {\n  position: fixed;\n  width: calc(100% - 2rem);\n  top: 10%;\n  left: 50%;\n  transform: translateX(-50%);\n  background-color: white;\n  background-image: linear-gradient(hsl(136, 65%, 51%), transparent);\n  margin-top: 1.5rem;\n  padding: 1.625rem;\n  border-radius: 5px;\n}\n.header__menu a {\n  display: block;\n  padding: 0.625rem;\n  color: hsl(233, 26%, 24%);\n  text-align: center;\n}\n.header__toggle > span {\n  display: block;\n  width: 40px;\n  height: 5px;\n  background-color: red;\n  transition: all 300ms ease-in-out;\n  transform-origin: 5px 2px;\n}\n.header__toggle > span:not(:last-child) {\n  margin-bottom: 5px;\n}\n\n.disable-transition {\n  transition: none !important;\n}\n\n.sticky {\n  position: sticky;\n  top: 0;\n  width: 100%;\n}\n\n.content {\n  padding: 1rem;\n}/*# sourceMappingURL=style.css.map */"],"sourceRoot":""}]);
+}
+
+.carouselItem {
+  flex: 0 0 100%;
+  padding: 10px; /* Add spacing between items */
+}
+
+@media (min-width: var(--medium-breakpoint-up)) {
+  .carouselItem {
+    flex: 0 0 33.3333333333%; /* Set the width to one-third of the container */
+    padding: 10px; /* Add spacing between items */
+  }
+}
+@media (min-width: var(--large-breakpoint-up)) {
+  .carouselItem {
+    flex: 0 0 20%; /* Set the width to one-third of the container */
+    padding: 10px; /* Add spacing between items */
+  }
+}
+.carouselHeader {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px; /* Add some space between header and image */
+  overflow-x: auto;
+}
+
+.carouselImg {
+  display: flex;
+  width: 100%; /* Take up the full width of the parent container */
+  height: auto;
+  overflow-x: auto;
+}
+
+.carouselArrows {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px; /* Add some spacing between carousel and arrows */
+}
+
+.carouselArrows button {
+  font-size: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.carouselArrows button:hover {
+  color: #007bff; /* Change color on hover (optional) */
+} `, "",{"version":3,"sources":["webpack://./src/styles/style.css"],"names":[],"mappings":"AAAA;EACE,4BAAA;EACA,2BAAA;EACA,8BAAA;EACA,kCAAA;EACA,mCAAA;EACA,kCAAA;AACF;;AAEA;EACE,UAAA;EACA,kBAAA;AACF;;AAEA;EACE;IACE,UAAA;IACA,kBAAA;EACF;EACA;IACE,UAAA;IACA,mBAAA;EACF;AACF;AACA;EACE,6CAAA;AACF;;AAEA;EACE;IACE,UAAA;IACA,mBAAA;EACF;EACA;IACE,UAAA;IACA,kBAAA;EACF;AACF;AACA;EACE,8CAAA;AACF;;AAEA;EACE;IACE,4BAAA;EACF;EACA;IACE,wBAAA;EACF;AACF;AACA;EACE,+CAAA;AACF;;AAEA;EACE,eAAA;EACA,sBAAA;AACF;;AAEA;;;EAGE,mBAAA;AACF;;AAEA;EACE,SAAA;EACA,UAAA;EACA,sCAAA;EACA,mBAAA;EACA,gBAAA;EACA,gBAAA;EACA,kBAAA;AACF;;AACA;EACE;IACE,mBAAA;EAEF;AACF;AAAA;EACE,gBAAA;AAEF;;AACA;EACE,gBAAA;EACA,sBAAA;AAEF;;AACA;EACE,gBAAA;EACA,cAAA;EACA,gBAAA;AAEF;;AAAA;EACE,mBAAA;EACA,kBAAA;EACA,iBAAA;EACA,oBAAA;AAGF;;AADA;EACE;IACE,mBAAA;IACA,kBAAA;IACA,mBAAA;IACA,sBAAA;EAIF;AACF;AAFA;EACE,mBAAA;EACA,oBAAA;EACA,kBAAA;AAIF;;AAFA;EACE;IACE,mBAAA;IACA,kBAAA;EAKF;AACF;AAFA;EACE,aAAA;AAIF;;AAFA;EACE,8BAAA;AAKF;;AAHA;EACE,mBAAA;AAMF;;AAJA;EACE,uBAAA;AAOF;;AAJA;EACE,yBAAA;EACA,cAAA;EACA,SAAA;EACA,mBAAA;EACA,uEAAA;EACA,kBAAA;EACA,eAAA;EACA,eAAA;AAOF;;AAJA;EACE;IACE,aAAA;EAOF;AACF;AAJA;EACE;IACE,aAAA;EAMF;AACF;AAHA;EACE,aAAA;AAKF;;AAFA;EACE,cAAA;AAKF;;AAFA;EACE,sBAAA;EACA,cAAA;EACA,iCAAA;EACA,YAAA;EACA,eAAA;EACA,QAAA;EACA,WAAA;AAKF;;AAFA;EACE,yBAAA;EACA,aAAA;EACA,kBAAA;AAKF;;AAFA;EACE,UAAA;EACA,WAAA;EACA,mCAAA;EACA,iCAAA;EACA,YAAA;AAKF;;AAHA;EACE;IACE,YAAA;EAMF;AACF;AAJA;EACE,WAAA;AAMF;;AAJA;EACE,wBAAA;AAOF;;AALA;EACE,UAAA;AAQF;;AANA;EACE,yBAAA;AASF;;AAPA;EACE,WAAA;AAUF;;AARA;EACE,uBAAA;AAWF;;AATA;EACE,UAAA;AAYF;;AAVA;EACE,uBAAA;AAaF;;AAXA;EACE,UAAA;EACA,eAAA;EACA,QAAA;EACA,UAAA;EACA,WAAA;EACA,SAAA;EACA,kEAAA;AAcF;;AAZA;EACE,eAAA;EACA,wBAAA;EACA,QAAA;EACA,SAAA;EACA,2BAAA;EACA,uBAAA;EACA,kEAAA;EACA,kBAAA;EACA,iBAAA;EACA,kBAAA;AAeF;;AAbA;EACE,cAAA;EACA,iBAAA;EACA,yBAAA;EACA,kBAAA;AAgBF;;AAdA;EACE,cAAA;EACA,WAAA;EACA,WAAA;EACA,qBAAA;EACA,iCAAA;EACA,yBAAA;AAiBF;;AAfA;EACE,kBAAA;AAkBF;;AAfA;EACE,2BAAA;AAkBF;;AAfA;EACE,gBAAA;EACA,MAAA;EACA,WAAA;AAkBF;;AAfA;EACE,aAAA;AAkBF;;AAfA;EACE,cAAA;EACA,aAAA,EAAA,8BAAA;AAkBF;;AAhBA;EACE;IACE,wBAAA,EAAA,gDAAA;IACA,aAAA,EAAA,8BAAA;EAmBF;AACF;AAjBA;EACE;IACE,aAAA,EAAA,gDAAA;IACA,aAAA,EAAA,8BAAA;EAmBF;AACF;AAhBA;EACE,kBAAA;EACA,eAAA;EACA,iBAAA;EACA,kBAAA,EAAA,4CAAA;EACA,gBAAA;AAkBF;;AAfA;EACE,aAAA;EACA,WAAA,EAAA,mDAAA;EACA,YAAA;EACA,gBAAA;AAkBF;;AAfA;EACE,aAAA;EACA,8BAAA;EACA,mBAAA;EACA,gBAAA,EAAA,iDAAA;AAkBF;;AAfA;EACE,eAAA;EACA,uBAAA;EACA,YAAA;EACA,eAAA;AAkBF;;AAfA;EACE,cAAA,EAAA,qCAAA;AAkBF","sourcesContent":[":root {\n  --medium-breakpoint-up: 40em;\n  --large-breakpoint-up: 64em;\n  --xlarge-breakpoint-up: 87.5em;\n  --small-breakpoint-down: 39.9375em;\n  --medium-breakpoint-down: 63.9375em;\n  --large-breakpoint-down: 87.4375em;\n}\n\n.has-fade {\n  opacity: 0;\n  visibility: hidden;\n}\n\n@keyframes fade-in {\n  from {\n    opacity: 0;\n    visibility: hidden;\n  }\n  to {\n    opacity: 1;\n    visibility: visible;\n  }\n}\n.fade-in {\n  animation: fade-in 200ms ease-in-out forwards;\n}\n\n@keyframes fade-out {\n  from {\n    opacity: 1;\n    visibility: visible;\n  }\n  to {\n    opacity: 0;\n    visibility: hidden;\n  }\n}\n.fade-out {\n  animation: fade-out 200ms ease-in-out forwards;\n}\n\n@keyframes slide-in {\n  from {\n    transform: translateY(-100%);\n  }\n  to {\n    transform: translateY(0);\n  }\n}\n.slide-in {\n  animation: slide-in 10secs ease-in-out forwards;\n}\n\nhtml {\n  font-size: 100%;\n  box-sizing: border-box;\n}\n\n*,\n*::before,\n*::after {\n  box-sizing: inherit;\n}\n\nbody {\n  margin: 0;\n  padding: 0;\n  font-family: \"Public Sans\", sans-serif;\n  font-size: 0.875rem;\n  font-weight: 300;\n  line-height: 1.3;\n  overflow-x: hidden;\n}\n@media (min-width: var(--large-breakpoint-up)) {\n  body {\n    font-size: 1.125rem;\n  }\n}\nbody.noscroll {\n  overflow: hidden;\n}\n\np {\n  line-height: 1.5;\n  margin-bottom: 2.25rem;\n}\n\n.container {\n  max-width: 75rem;\n  margin: 0 auto;\n  overflow: hidden;\n}\n.container--pHeader {\n  padding-right: 6rem;\n  padding-left: 6rem;\n  padding-top: 1rem;\n  padding-bottom: 2rem;\n}\n@media (min-width: var(--large-breakpoint-up)) {\n  .container--pHeader {\n    padding-right: 6rem;\n    padding-left: 6rem;\n    padding-top: 1.5rem;\n    padding-bottom: 2.5rem;\n  }\n}\n.container--pContent {\n  padding-right: 6rem;\n  padding-bottom: 2rem;\n  padding-left: 6rem;\n}\n@media (min-width: var(--large-breakpoint-up)) {\n  .container--pContent {\n    padding-right: 6rem;\n    padding-left: 6rem;\n  }\n}\n\n.flex {\n  display: flex;\n}\n.flex-jc-sb {\n  justify-content: space-between;\n}\n.flex-ai-c {\n  align-items: center;\n}\n.flex-jc-c {\n  justify-content: center;\n}\n\n.btn {\n  background-color: #2fa8cc;\n  color: #f4f4f4;\n  border: 0;\n  border-radius: 10px;\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1);\n  padding: 14px 40px;\n  font-size: 16px;\n  cursor: pointer;\n}\n\n@media (max-width: var(--medium-breakpoint-down)) {\n  .hide-for-mobile {\n    display: none;\n  }\n}\n\n@media (min-width: var(--large-breakpoint-up)) {\n  .hide-for-desktop {\n    display: none;\n  }\n}\n\n.hidden {\n  display: none;\n}\n\n.visible {\n  display: block;\n}\n\n.tabs {\n  background-color: gray;\n  display: block;\n  transition: all 500ms ease-in-out;\n  height: 4rem;\n  position: fixed;\n  top: 0px;\n  width: 100%;\n}\n\n.top-container {\n  background-color: #f1f1f1;\n  padding: 1rem;\n  text-align: center;\n}\n\n.header {\n  z-index: 1;\n  width: 100%;\n  background-color: hsl(233, 8%, 62%);\n  transition: all 500ms ease-in-out;\n  height: 4rem;\n}\n@media (min-width: var(--large-breakpoint-up)) {\n  .header {\n    height: 5rem;\n  }\n}\n.header.open {\n  width: 100%;\n}\n.header.open .header__toggle > span:first-child {\n  transform: rotate(42deg);\n}\n.header.open .header__toggle > span:nth-child(2) {\n  opacity: 0;\n}\n.header.open .header__toggle > span:last-child {\n  transform: rotate(-42deg);\n}\n.header.close {\n  width: 100%;\n}\n.header.close .header__toggle > span:first-child {\n  transform: rotate(0deg);\n}\n.header.close .header__toggle > span:nth-child(2) {\n  opacity: 1;\n}\n.header.close .header__toggle > span:last-child {\n  transform: rotate(0deg);\n}\n.header .overlay {\n  opacity: 0;\n  position: fixed;\n  top: 0px;\n  right: 0px;\n  bottom: 0px;\n  left: 0px;\n  background-image: linear-gradient(hsl(233, 26%, 24%), transparent);\n}\n.header__menu {\n  position: fixed;\n  width: calc(100% - 2rem);\n  top: 10%;\n  left: 50%;\n  transform: translateX(-50%);\n  background-color: white;\n  background-image: linear-gradient(hsl(136, 65%, 51%), transparent);\n  margin-top: 1.5rem;\n  padding: 1.625rem;\n  border-radius: 5px;\n}\n.header__menu a {\n  display: block;\n  padding: 0.625rem;\n  color: hsl(233, 26%, 24%);\n  text-align: center;\n}\n.header__toggle > span {\n  display: block;\n  width: 40px;\n  height: 5px;\n  background-color: red;\n  transition: all 300ms ease-in-out;\n  transform-origin: 5px 2px;\n}\n.header__toggle > span:not(:last-child) {\n  margin-bottom: 5px;\n}\n\n.disable-transition {\n  transition: none !important;\n}\n\n.sticky {\n  position: sticky;\n  top: 0;\n  width: 100%;\n}\n\n.content {\n  padding: 1rem;\n}\n\n.carouselItem {\n  flex: 0 0 100%;\n  padding: 10px; /* Add spacing between items */\n}\n@media (min-width: var(--medium-breakpoint-up)) {\n  .carouselItem {\n    flex: 0 0 33.3333333333%; /* Set the width to one-third of the container */\n    padding: 10px; /* Add spacing between items */\n  }\n}\n@media (min-width: var(--large-breakpoint-up)) {\n  .carouselItem {\n    flex: 0 0 20%; /* Set the width to one-third of the container */\n    padding: 10px; /* Add spacing between items */\n  }\n}\n\n.carouselHeader {\n  text-align: center;\n  font-size: 18px;\n  font-weight: bold;\n  margin-bottom: 5px; /* Add some space between header and image */\n  overflow-x: auto;\n}\n\n.carouselImg {\n  display: flex;\n  width: 100%; /* Take up the full width of the parent container */\n  height: auto;\n  overflow-x: auto;\n}\n\n.carouselArrows {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-top: 10px; /* Add some spacing between carousel and arrows */\n}\n\n.carouselArrows button {\n  font-size: 24px;\n  background: transparent;\n  border: none;\n  cursor: pointer;\n}\n\n.carouselArrows button:hover {\n  color: #007bff; /* Change color on hover (optional) */\n}/*# sourceMappingURL=style.css.map */"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1242,6 +1364,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utility__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_utility */ "./src/scripts/_utility.js");
 /* harmony import */ var _styles_style_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../styles/style.css */ "./src/styles/style.css");
 /* harmony import */ var _globals__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_globals */ "./src/scripts/_globals.js");
+/* harmony import */ var _carousel__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_carousel */ "./src/scripts/_carousel.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -1249,6 +1372,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 // import generateJoke from "./generateJoke";
+
 
 
 var headerCopy = (0,_utility__WEBPACK_IMPORTED_MODULE_1__.copyObject)(_globals__WEBPACK_IMPORTED_MODULE_3__.header);
@@ -1354,8 +1478,30 @@ function showTabs() {
 window.onscroll = function () {
   showTabs();
 };
+var currentIndex = 0;
+var visibleImages = 3;
+_carousel__WEBPACK_IMPORTED_MODULE_4__.initializeCarArrows(_globals__WEBPACK_IMPORTED_MODULE_3__.prevArrow, _globals__WEBPACK_IMPORTED_MODULE_3__.nextArrow, currentIndex, visibleImages, _globals__WEBPACK_IMPORTED_MODULE_3__.carousel);
+var mediumBreakpoint = getComputedStyle(document.documentElement).getPropertyValue('--medium-breakpoint-up');
+var largeBreakpoint = getComputedStyle(document.documentElement).getPropertyValue('--large-breakpoint-up');
+var xlargeBreakpoint = getComputedStyle(document.documentElement).getPropertyValue('--xlarge-breakpoint-up');
+console.log(mediumBreakpoint); // "40em"
+console.log(largeBreakpoint); // "64em"
+console.log(xlargeBreakpoint); // "87.5em"
+
+// const isMediumBreakPoint = window.matchMedia(`(min-width: ${$breakpoint-up["medium"]})`).matches;
+// const isLargeBreakPoint = window.matchMedia(`(min-width: ${$breakpoint-up["large"]})`).matches;
+
+// if (isMediumBreakPoint) {
+//   currentIndex = 0;
+//   visibleImages = 3; // Set the variable value to 1 for the medium breakpoint
+// }
+
+// if (isMediumBreakPoint && isLargeBreakPoint) {
+//   currentIndex = 0;
+//   visibleImages = 5; // Set the variable value to 1 for the medium breakpoint
+// }
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle313b4a93eab7654ec640.js.map
+//# sourceMappingURL=bundle20ebef6b45473027bd5e.js.map

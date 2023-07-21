@@ -2,6 +2,27 @@
 $headerHeightFullScreen: 5rem;
 $headerHeightMinimized: 4rem;
 
+
+
+$medium-breakpoint-up: 40em;
+$large-breakpoint-up: 64em;
+$xlarge-breakpoint-up: 87.5em;
+$small-breakpoint-down: 39.9375em;
+$medium-breakpoint-down: 63.9375em;
+$large-breakpoint-down: 87.4375em;
+
+:root {
+  --medium-breakpoint-up: #{$medium-breakpoint-up};
+  --large-breakpoint-up: #{$large-breakpoint-up};
+  --xlarge-breakpoint-up: #{$xlarge-breakpoint-up};
+  --small-breakpoint-down: #{$small-breakpoint-down};
+  --medium-breakpoint-down: #{$medium-breakpoint-down};
+  --large-breakpoint-down: #{$large-breakpoint-down};
+
+}
+
+  
+
 // Colors
 $darkBlue: hsl(233, 26%, 24%);
 $limeGreen: hsl(136, 65%, 51%);

@@ -1,3 +1,12 @@
+:root {
+  --medium-breakpoint-up: 40em;
+  --large-breakpoint-up: 64em;
+  --xlarge-breakpoint-up: 87.5em;
+  --small-breakpoint-down: 39.9375em;
+  --medium-breakpoint-down: 63.9375em;
+  --large-breakpoint-down: 87.4375em;
+}
+
 .has-fade {
   opacity: 0;
   visibility: hidden;

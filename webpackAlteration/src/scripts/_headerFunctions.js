@@ -1,4 +1,5 @@
-import { toggleMove} from './_moveObject';
+import * as moveObj from './_moveObject';
+import * as globals from './_globals';
 
 
 export async function closeHeader(object) {
@@ -23,7 +24,7 @@ export async function openHeaderCopy(objectCopy, originalPositions, originalObje
     }
     originalPositions[objectCopy.id][1] = originalHeaderTop;
     objectCopy.style.top = originalHeaderTop + 'px';
-    await toggleMove(objectCopy, originalPositions);
+    await moveObj.toggleMove(objectCopy, originalPositions);
     objectCopy.classList.add('open');
     const fadeElemsCopy = objectCopy.querySelectorAll('.has-fade');
     fadeElemsCopy.forEach(function(element) {
@@ -41,12 +42,33 @@ export async function closeHeaderCopy(objectCopy, originalPositions) {
         element.classList.add('fade-out');
         element.classList.remove('fade-in');
     });
-    objectCopy.classList.remove('open');
-    await toggleMove(objectCopy, originalPositions);
-    // Added slight delay to prevent flickering when headerCopy 
-    // became visible when transition was active.
-    setTimeout(function() {
-        objectCopy.querySelector('#btnHamburgerCopy').style.display = 'none';
-        objectCopy.style.visibility = 'hidden';
-    }, 200);
+    if (objectCopy.classList.contains('open')){
+        objectCopy.classList.remove('open');
+        await moveObj.toggleMove(objectCopy, originalPositions);
+        // Added slight delay to prevent flickering when headerCopy 
+        // became visible when transition was active.
+        setTimeout(function() {
+            objectCopy.querySelector('#btnHamburgerCopy').style.display = 'none';
+            objectCopy.style.visibility = 'hidden';
+        }, 200);
+    }
+
 }
+
+export function initializeHeaderHamburgerBtn(){
+    globals.header.addEventListener('click', async function(event){
+        event.preventDefault();
+        globals.body.classList.add('noscroll');
+        console.log('header clicked');
+        await closeHeader(globals.header);
+        await openHeaderCopy(globals.headerCopy, globals.originalPositions, globals.header);
+    });
+  
+    globals.headerCopy.addEventListener('click', async function(event) {
+        event.preventDefault();
+        console.log('Hamburger menu clicked');
+        await closeHeaderCopy(globals.headerCopy,  globals.originalPositions);
+        await openHeader(globals.header);
+        globals.body.classList.remove('noscroll');
+    });
+  }
