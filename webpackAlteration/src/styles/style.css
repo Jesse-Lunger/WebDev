@@ -71,6 +71,7 @@ body {
   font-weight: 300;
   line-height: 1.3;
   overflow-x: hidden;
+  height: auto;
 }
 @media (min-width: 64em) {
   body {
@@ -266,43 +267,62 @@ p {
   padding: 1rem;
 }
 
+#carousel {
+  padding-top: 15px;
+  padding-bottom: 20px;
+}
+
 .carouselItem {
   flex: 0 0 100%;
-  padding: 10px; /* Add spacing between items */
+  padding: 10px;
+  transition: transform 0.3s ease-in-out;
+  position: relative; /* Add position relative to respect its parent container */
 }
 @media (min-width: 40em) {
   .carouselItem {
-    flex: 0 0 33.3333333333%; /* Set the width to one-third of the container */
-    padding: 10px; /* Add spacing between items */
+    flex: 0 0 33.3333333333%;
   }
 }
 @media (min-width: 64em) {
   .carouselItem {
-    flex: 0 0 20%; /* Set the width to one-third of the container */
-    padding: 10px; /* Add spacing between items */
+    flex: 0 0 20%;
   }
+}
+.carouselItem:hover {
+  transform: scale(1.1);
 }
 
 .carouselHeader {
+  z-index: 1;
+  justify-content: center;
+  display: flex;
+  position: absolute;
   text-align: center;
   font-size: 18px;
   font-weight: bold;
-  margin-bottom: 5px; /* Add some space between header and image */
+  margin-bottom: 5px;
   overflow-x: auto;
+  background-color: rgba(0, 0, 0, 0.1);
+  width: 91%;
 }
 
 .carouselImg {
+  transition: flex 0.3s ease-in-out;
+  border-radius: 15px;
   display: flex;
-  width: 100%; /* Take up the full width of the parent container */
+  max-width: 100%; /* Set maximum width to prevent it from extending beyond the container */
   height: auto;
   overflow-x: auto;
+}
+.carouselImg:hover {
+  filter: blur(1px);
 }
 
 .carouselArrows {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 10px; /* Add some spacing between carousel and arrows */
+  margin-top: 10px;
 }
 
 .carouselArrows button {
@@ -313,5 +333,5 @@ p {
 }
 
 .carouselArrows button:hover {
-  color: #007bff; /* Change color on hover (optional) */
+  color: #007bff;
 }/*# sourceMappingURL=style.css.map */

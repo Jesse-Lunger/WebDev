@@ -22,6 +22,7 @@ export function initializeCarArrows(){
 
 export function carouselResize(windowSize) {
     currentIndex = 0;
+    scrollToHorizontal(currentIndex, globals.carousel);
     if (windowSize === 'small'){
         visibleImages = 1;
     }

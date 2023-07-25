@@ -15,27 +15,30 @@ await globals.initializeBreakPoints();
 
 
 
-console.log(globals.header.classList);
-
 
 window.addEventListener('resize', async function() {
 
   if (window.innerWidth >= globals.breakpoints['largeBreakpoint']) {  
     // globals.body.classList.remove('noscroll');
-    this.document.body.classList.remove('noscroll');   
-    hdrFuncs.closeHeaderCopy(globals.headerCopy, globals.originalPositions);
-    hdrFuncs.openHeader(globals.header);
-    globals.header.classList.add('hide-for-desktop');
-
+    if (globals.headerCopy.classList.contains('open')){
+      this.document.body.classList.remove('noscroll');   
+      await hdrFuncs.closeHeaderCopy(globals.headerCopy, globals.originalPositions);
+      await hdrFuncs.openHeader(globals.header);
+      console.log(globals.btnHamburger.classList);
+    }
+    if (globals.btnHamburger.style.display === 'block'){
+      globals.btnHamburger.style.display = 'none';
+    }
     carFun.carouselResize('large');
   }
-
   else if (window.innerWidth >= globals.breakpoints['mediumBreakpoint']){
+    if (globals.btnHamburger.style.display === 'none'){
+      globals.btnHamburger.style.display = 'block';
+    }
     carFun.carouselResize('medium');
   }
   else {
     carFun.carouselResize('small');
-
   }
 });
 

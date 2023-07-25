@@ -17,6 +17,7 @@ body {
   font-weight: 300;
   line-height: 1.3;
   overflow-x: hidden;
+  height: auto;
 
   @include breakpoint-up(large) {
     font-size: $font-med;
@@ -49,7 +50,6 @@ p {
     @include breakpoint-up(large) {
       padding-right: 6rem;
       padding-left: 6rem;
-
       padding-top: calc($headerHeightFullScreen /2) - 1;
       padding-bottom: calc($headerHeightFullScreen /2);
     }

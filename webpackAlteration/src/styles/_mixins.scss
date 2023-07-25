@@ -1,12 +1,10 @@
 @media (min-width: 64em){
   }
 
-  
 // 640px, 1024px, 1400px
 $breakpoints-up: (  "medium": $medium-breakpoint-up, 
                     "large": $large-breakpoint-up, 
                     "xlarge": $xlarge-breakpoint-up);
-
 
 // 639px, 1023px, 1399px
 $breakpoints-down: (  "small": $small-breakpoint-down, 
