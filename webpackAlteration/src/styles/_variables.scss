@@ -3,7 +3,6 @@ $headerHeightFullScreen: 5rem;
 $headerHeightMinimized: 4rem;
 
 
-
 $medium-breakpoint-up: 40em;
 $large-breakpoint-up: 64em;
 $xlarge-breakpoint-up: 87.5em;
@@ -11,17 +10,15 @@ $small-breakpoint-down: 39.9375em;
 $medium-breakpoint-down: 63.9375em;
 $large-breakpoint-down: 87.4375em;
 
+
 :root {
-  --medium-breakpoint-up: #{$medium-breakpoint-up};
-  --large-breakpoint-up: #{$large-breakpoint-up};
-  --xlarge-breakpoint-up: #{$xlarge-breakpoint-up};
-  --small-breakpoint-down: #{$small-breakpoint-down};
-  --medium-breakpoint-down: #{$medium-breakpoint-down};
-  --large-breakpoint-down: #{$large-breakpoint-down};
-
+    --medium-breakpoint-up: #{$medium-breakpoint-up};
+    --large-breakpoint-up: #{$large-breakpoint-up};
+    --xlarge-breakpoint-up: #{$xlarge-breakpoint-up};
+    --small-breakpoint-down: #{$small-breakpoint-down};
+    --medium-breakpoint-down: #{$medium-breakpoint-down};
+    --large-breakpoint-down: #{$large-breakpoint-down};
 }
-
-  
 
 // Colors
 $darkBlue: hsl(233, 26%, 24%);
@@ -33,7 +30,7 @@ $veryLightGray: hsl(0, 0%, 98%);
 $white: hsl(0, 0%, 100%);
 
 // Font Sizes
-$font-sm: 0.875rem; // 14px
+$font-sm: 0.875rem;  // 16px
 $font-med: 1.125rem; // 18px
-$font-lg: 1.25rem;
+$font-lg: 1.25rem;   // 20px
 $font-xlg: 3.25rem;

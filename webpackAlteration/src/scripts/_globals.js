@@ -19,16 +19,24 @@ export const carousel = document.getElementById('carousel');
 export const prevArrow = document.getElementById('prevArrow');
 export const nextArrow = document.getElementById('nextArrow');
 
-export const mediumBreakpoint = getComputedStyle(document.documentElement).getPropertyValue('--medium-breakpoint-up');
-export const largeBreakpoint = getComputedStyle(document.documentElement).getPropertyValue('--large-breakpoint-up');
-export const xlargeBreakpoint = getComputedStyle(document.documentElement).getPropertyValue('--xlarge-breakpoint-up');
+export const breakpoints = {};
 
-console.log(mediumBreakpoint);
+export async function initializeBreakPoints(){
+  await new Promise((resolve) => {
+    document.addEventListener("DOMContentLoaded", function() {
+      // Your JavaScript code here
+      breakpoints.mediumBreakpoint = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--medium-breakpoint-up')) * 16;
+      breakpoints.largeBreakpoint = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--large-breakpoint-up')) * 16;
+      resolve();
+    });
+  });
+}
+
+
 
 export const headerCopy = copyObject(header);
 headerCopy.querySelector('#btnHamburger').id = 'btnHamburgerCopy';
 headerCopy.classList.add('disable-transition');
-
 
 // initialized data structures
 navLinks.forEach(link => {
@@ -71,7 +79,6 @@ for (let i = 0; i < carImages.length; i++){
   carItem.appendChild(imageTittle);
   carItem.appendChild(ImageHandle);
   carousel.appendChild(carItem);
-
 }
 
 

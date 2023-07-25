@@ -7,13 +7,35 @@ import * as carFun from './_carousel';
 
 
 hdrFuncs.initializeHeaderHamburgerBtn()
-console.log(globals.largeBreakpoint);
+await globals.initializeBreakPoints();
+
+
+// var bodyFontSize = parseFloat(getComputedStyle(document.body).fontSize);
+// console.log(globals.breakpoints.mediumBreakpoint * bodyFontSize); // Output: Computed font size of the body element
+
+
+
+console.log(globals.header.classList);
 
 
 window.addEventListener('resize', async function() {
-  if (window.innerWidth >= globals.largeBreakpoint) {  
+
+  if (window.innerWidth >= globals.breakpoints['largeBreakpoint']) {  
+    // globals.body.classList.remove('noscroll');
+    this.document.body.classList.remove('noscroll');   
     hdrFuncs.closeHeaderCopy(globals.headerCopy, globals.originalPositions);
-    hdrFuncs.openHeader(globals.header)
+    hdrFuncs.openHeader(globals.header);
+    globals.header.classList.add('hide-for-desktop');
+
+    carFun.carouselResize('large');
+  }
+
+  else if (window.innerWidth >= globals.breakpoints['mediumBreakpoint']){
+    carFun.carouselResize('medium');
+  }
+  else {
+    carFun.carouselResize('small');
+
   }
 });
 
@@ -49,7 +71,7 @@ window.onscroll = function() {
 
 
 
-// carFun.initializeCarArrows(globals.prevArrow, globals.nextArrow, currentIndex, visibleImages, globals.carousel);
+carFun.initializeCarArrows();
 
 // globals.mediumBreakpoint
 // console.log(mediumBreakpoint); // "40em"

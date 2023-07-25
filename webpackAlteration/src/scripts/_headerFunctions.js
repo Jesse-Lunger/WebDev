@@ -19,9 +19,9 @@ export async function openHeaderCopy(objectCopy, originalPositions, originalObje
     objectCopy.style.visibility = 'visible';
     objectCopy.classList.add('openCopy');
     const originalHeaderTop = originalObject.getBoundingClientRect().top;
-    if (!(objectCopy.id in originalPositions)) {
+    // if (!(objectCopy.id in originalPositions)) {
         originalPositions[objectCopy.id] = [false, originalHeaderTop];
-    }
+    // }
     originalPositions[objectCopy.id][1] = originalHeaderTop;
     objectCopy.style.top = originalHeaderTop + 'px';
     await moveObj.toggleMove(objectCopy, originalPositions);
@@ -35,14 +35,14 @@ export async function openHeaderCopy(objectCopy, originalPositions, originalObje
 }
   
 export async function closeHeaderCopy(objectCopy, originalPositions) {
-    objectCopy.classList.add('disable-transition');
-    objectCopy.classList.remove('openCopy');
-    const fadeElemsCopy = objectCopy.querySelectorAll('.has-fade');
-    fadeElemsCopy.forEach(function(element) {
-        element.classList.add('fade-out');
-        element.classList.remove('fade-in');
-    });
     if (objectCopy.classList.contains('open')){
+        objectCopy.classList.add('disable-transition');
+        objectCopy.classList.remove('openCopy');
+        const fadeElemsCopy = objectCopy.querySelectorAll('.has-fade');
+        fadeElemsCopy.forEach(function(element) {
+            element.classList.add('fade-out');
+            element.classList.remove('fade-in');
+        });
         objectCopy.classList.remove('open');
         await moveObj.toggleMove(objectCopy, originalPositions);
         // Added slight delay to prevent flickering when headerCopy 
