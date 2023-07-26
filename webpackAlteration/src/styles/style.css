@@ -274,18 +274,25 @@ p {
 
 .carouselItem {
   flex: 0 0 100%;
-  padding: 10px;
+  padding: 20px;
+  width: 260;
   transition: transform 0.3s ease-in-out;
   position: relative; /* Add position relative to respect its parent container */
+  padding-left: 20%;
+  padding-right: 20%;
 }
 @media (min-width: 40em) {
   .carouselItem {
     flex: 0 0 33.3333333333%;
+    padding-left: 2%;
+    padding-right: 2%;
   }
 }
 @media (min-width: 64em) {
   .carouselItem {
     flex: 0 0 20%;
+    padding-left: 2%;
+    padding-right: 2%;
   }
 }
 .carouselItem:hover {
@@ -298,19 +305,26 @@ p {
   display: flex;
   position: absolute;
   text-align: center;
-  font-size: 18px;
+  font-size: large;
   font-weight: bold;
   margin-bottom: 5px;
   overflow-x: auto;
   background-color: rgba(0, 0, 0, 0.1);
-  width: 91%;
+}
+
+.carouselBody {
+  z-index: 2;
+  justify-content: right;
+  display: flex;
+  position: absolute;
+  font-size: medium;
 }
 
 .carouselImg {
   transition: flex 0.3s ease-in-out;
   border-radius: 15px;
   display: flex;
-  max-width: 100%; /* Set maximum width to prevent it from extending beyond the container */
+  max-width: 100%;
   height: auto;
   overflow-x: auto;
 }

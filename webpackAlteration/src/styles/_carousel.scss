@@ -5,50 +5,63 @@
 
 .carouselItem {
   flex: 0 0 100%;
-  padding: 10px;
+  padding: 20px;
+  width: 260;
   transition: transform 0.3s ease-in-out;
   position: relative; /* Add position relative to respect its parent container */
-  
+  padding-left: 20%;
+  padding-right: 20%;
+
   @include breakpoint-up(medium) {
     flex: 0 0 calc(100% / 3);
+    padding-left: 2%;
+    padding-right: 2%;
   }
   
   @include breakpoint-up(large) {
     flex: 0 0 calc(100% / 5);
+    padding-left: 2%;
+    padding-right: 2%;
   }
 
   &:hover {
     transform: scale(1.1);
   }
 }
-  
+
 .carouselHeader {
   z-index: 1;
   justify-content: center;
   display: flex;
   position: absolute;
   text-align: center;
-  font-size: 18px;
+  font-size: large;
   font-weight: bold;
   margin-bottom: 5px;
   overflow-x: auto;
   background-color: rgba(0, 0, 0, 0.1);
-  width: 91%;
+}
+
+.carouselBody {
+  z-index: 2;
+  justify-content: right;
+  display: flex;
+  position: absolute;
+  font-size: medium;
 }
 
 .carouselImg {
   transition: flex 0.3s ease-in-out;
   border-radius: 15px;
   display: flex;
-  max-width: 100%; /* Set maximum width to prevent it from extending beyond the container */
+  max-width: 100%;
   height: auto;
   overflow-x: auto;
-
   &:hover {
     filter: blur(1px);
   }
 }
-  
+
 .carouselArrows {
   display: flex;
   justify-content: space-between;

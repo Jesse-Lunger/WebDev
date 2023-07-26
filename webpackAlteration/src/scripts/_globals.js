@@ -62,6 +62,7 @@ import srcImage4 from '../images/jpgs/carousel/testImage4.jpg';
 import srcImage5 from '../images/jpgs/carousel/testImage5.jpg';
 
 const carImages = [srcImage1, srcImage2, srcImage3, srcImage4, srcImage5];
+const tittleList = ['unity', 'deepLearning', 'website', 'hashDatabase', 'group App']
 for (let i = 0; i < carImages.length; i++){
   const carItem = document.createElement('div');
   const imageTittle = document.createElement('h3');
@@ -69,7 +70,7 @@ for (let i = 0; i < carImages.length; i++){
 
   carItem.classList.add('carouselItem')
 
-  const imageTitleText = `Title ${i + 1}`; // Using template literal to include the value of 'i'
+  const imageTitleText = tittleList[i]; // Using template literal to include the value of 'i'
   imageTittle.textContent = imageTitleText;
   imageTittle.classList.add('carouselHeader')
 

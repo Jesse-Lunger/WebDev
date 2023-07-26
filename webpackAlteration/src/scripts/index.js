@@ -17,8 +17,15 @@ await globals.initializeBreakPoints();
 
 
 window.addEventListener('resize', async function() {
+  const carouselItems = document.querySelectorAll('.carouselItem');
+  carouselItems.forEach(item => {
+    const carHeader = item.querySelector('.carouselHeader');
+    const image = getComputedStyle(item.querySelector('img'))  
+    carHeader.style.width = image.width;
+  })
 
   if (window.innerWidth >= globals.breakpoints['largeBreakpoint']) {  
+
     // globals.body.classList.remove('noscroll');
     if (globals.headerCopy.classList.contains('open')){
       this.document.body.classList.remove('noscroll');   
