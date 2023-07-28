@@ -55,32 +55,69 @@ headerPositionList.sort((a, b) => a - b);
 export const headerTabs = document.getElementById("headerTabs");
 
 // Images
-import srcImage1 from '../images/jpgs/carousel/testImage1.jpg';
-import srcImage2 from '../images/jpgs/carousel/testImage2.jpg';
-import srcImage3 from '../images/jpgs/carousel/testImage3.jpg';
-import srcImage4 from '../images/jpgs/carousel/testImage4.jpg';
-import srcImage5 from '../images/jpgs/carousel/testImage5.jpg';
+import fight from '../images/jpgs/carousel/fight.jpg';
+import ARA from '../images/jpgs/carousel/ARA.jpg';
+import spectrogram from '../images/jpgs/carousel/spectrogram.jpg';
+import artBroker from '../images/jpgs/carousel/artBroker.jpg';
+import webDev from '../images/jpgs/carousel/webDev.jpg';
 
-const carImages = [srcImage1, srcImage2, srcImage3, srcImage4, srcImage5];
-const tittleList = ['unity', 'deepLearning', 'website', 'hashDatabase', 'group App']
-for (let i = 0; i < carImages.length; i++){
+const carouselData = {
+  'unity': {
+    'image': fight,
+    'description': 'Group project, C# and unity engine',
+    'link': ''
+  },
+  'APP Development': {
+    'image': ARA,
+    'description': 'Group Project, Python, tkinter, sql',
+  },
+  'ArtBroker': {
+    'image': artBroker,
+    'description': 'Group Project, php, html, sql',
+    'link': ''
+  },
+  'Sound Recognition': {
+    'image': spectrogram,
+    'description': 'Group project: Python, Pytorch',
+    'link': ''
+  },
+  'Web Development': {
+    'image': webDev,
+    'description': 'Solo Project: JavaScript, CSS Html, WebPack',
+    'link': ''
+  }
+}
+
+for (const key in carouselData){
   const carItem = document.createElement('div');
   const imageTittle = document.createElement('h3');
-  const ImageHandle = document.createElement('img');
-
+  const imageBody = document.createElement('h3')
+  const image = document.createElement('img');
   carItem.classList.add('carouselItem')
 
-  const imageTitleText = tittleList[i]; // Using template literal to include the value of 'i'
-  imageTittle.textContent = imageTitleText;
-  imageTittle.classList.add('carouselHeader')
+  const tittleData = key
+  const data = carouselData[key];
+  const imageData = data['image'];
+  const descriptionData = data['description'];
+  const linkData = data['link'];
 
-  ImageHandle.src = carImages[i];
-  ImageHandle.classList.add('carouselImg');
+  imageTittle.textContent = tittleData;
+  imageTittle.classList.add('carouselHeader');
+
+  imageBody.textContent = descriptionData;
+  imageBody.classList.add('carouselBody');
+
+  image.src = imageData;
+  image.classList.add('carouselImg');
 
   carItem.appendChild(imageTittle);
-  carItem.appendChild(ImageHandle);
+  carItem.appendChild(imageBody);
+  carItem.appendChild(image);
   carousel.appendChild(carItem);
+
 }
+
+
 
 
 // image1.src = srcImage1;
