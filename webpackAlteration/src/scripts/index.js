@@ -7,22 +7,22 @@ import * as carFun from './_carousel';
 
 
 hdrFuncs.initializeHeaderHamburgerBtn()
-await globals.initializeBreakPoints();
+await globals.DOMContentLoaded();
 
 
 // var bodyFontSize = parseFloat(getComputedStyle(document.body).fontSize);
 // console.log(globals.breakpoints.mediumBreakpoint * bodyFontSize); // Output: Computed font size of the body element
 
 
+// globals.carousel.addEventListener('load', function {
+//   carFun.carouselHeaderBodyWidth();
+// })
+
+
 
 
 window.addEventListener('resize', async function() {
-  const carouselItems = document.querySelectorAll('.carouselItem');
-  carouselItems.forEach(item => {
-    const carHeader = item.querySelector('.carouselHeader');
-    const image = getComputedStyle(item.querySelector('img'))  
-    carHeader.style.width = image.width;
-  })
+  carFun.carouselHeaderBodyWidth();
 
   if (window.innerWidth >= globals.breakpoints['largeBreakpoint']) {  
 

@@ -313,19 +313,6 @@ p {
   background-color: black;
 }
 
-.carouselBody {
-  z-index: 2;
-  justify-content: right;
-  justify-content: space-between;
-  top: 15%;
-  display: flex;
-  position: absolute;
-  font-size: medium;
-  background-color: black;
-  color: white;
-  opacity: 1;
-}
-
 .carouselImg {
   transition: flex 0.3s ease-in-out;
   border-radius: 15px;
@@ -338,7 +325,38 @@ p {
   border: 3px solid black;
 }
 
-.carouselHeader:hover .carouselBody {
+.carouselItem:hover .carouselBody,
+.carouselItem:hover .carouselLink {
+  opacity: 1;
+}
+
+.carouselBody {
+  z-index: 2;
+  justify-content: right;
+  justify-content: space-between;
+  top: 15%;
+  display: flex;
+  position: absolute;
+  font-size: medium;
+  background-color: black;
+  color: white;
+  font-size: large;
+  opacity: 0; /* Set the initial opacity to 0 */
+  transition: all 500ms ease-in-out;
+}
+.carouselBody:hover {
+  opacity: 1;
+}
+
+.carouselLink {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: all 500ms ease-in-out;
+}
+.carouselLink:hover {
   opacity: 1;
 }
 

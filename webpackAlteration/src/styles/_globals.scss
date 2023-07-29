@@ -34,7 +34,6 @@ p {
   margin-bottom: 2.25rem;
 }
 
-// Spacing
 .container {
   max-width: 75rem;
   margin: 0 auto;
@@ -62,9 +61,8 @@ p {
     @include breakpoint-up(large) {
       padding-right: 6rem;
       padding-left: 6rem;
-    }
+    } 
   }
-
 }
 
 .flex {

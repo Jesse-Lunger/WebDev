@@ -1,4 +1,5 @@
 import { copyObject } from './_utility';
+import * as carFun from './_carousel';
 
 //Initial Empty data Structures
 export const headerPositions = {};
@@ -21,12 +22,13 @@ export const nextArrow = document.getElementById('nextArrow');
 
 export const breakpoints = {};
 
-export async function initializeBreakPoints(){
+export async function DOMContentLoaded(){
   await new Promise((resolve) => {
     document.addEventListener("DOMContentLoaded", function() {
       // Your JavaScript code here
       breakpoints.mediumBreakpoint = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--medium-breakpoint-up')) * 16;
       breakpoints.largeBreakpoint = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--large-breakpoint-up')) * 16;
+      carFun.carouselHeaderBodyWidth();
       resolve();
     });
   });
@@ -64,38 +66,39 @@ import webDev from '../images/jpgs/carousel/webDev.jpg';
 const carouselData = {
   'unity': {
     'image': fight,
-    'description': 'Group project, C# and unity engine',
+    'description': '<pre>Experience: <br> Blender <br> C# <br> Unity',
     'link': ''
   },
   'APP Development': {
     'image': ARA,
-    'description': 'Group Project, Python, tkinter, sql',
+    'description': '<pre>Experience: <br> Python <br> Tkinter <br> SQL',
   },
   'ArtBroker': {
     'image': artBroker,
-    'description': 'Group Project, php, html, sql',
+    'description': '<pre>Experience: <br> PHP <br> html <br> SQL',
     'link': ''
   },
   'Sound Recognition': {
     'image': spectrogram,
-    'description': 'Group project: Python, Pytorch',
+    'description': '<pre>Experience: <br> Deep Learning <br> Pytorch',
     'link': ''
   },
   'Web Development': {
     'image': webDev,
-    'description': 'Solo Project: JavaScript, CSS Html, WebPack',
+    'description': '<pre>Experience: <br> JavaScript <br> CSS <br> Html <br> WebPack',
     'link': ''
   }
 }
 
-for (const key in carouselData){
+for (const key in carouselData) {
   const carItem = document.createElement('div');
   const imageTittle = document.createElement('h3');
-  const imageBody = document.createElement('h3')
+  const imageBody = document.createElement('h3');
   const image = document.createElement('img');
-  carItem.classList.add('carouselItem')
+  const repoLink = document.createElement('a');
+  carItem.classList.add('carouselItem');
 
-  const tittleData = key
+  const tittleData = key;
   const data = carouselData[key];
   const imageData = data['image'];
   const descriptionData = data['description'];
@@ -104,18 +107,24 @@ for (const key in carouselData){
   imageTittle.textContent = tittleData;
   imageTittle.classList.add('carouselHeader');
 
-  imageBody.textContent = descriptionData;
+  imageBody.innerHTML = descriptionData;
   imageBody.classList.add('carouselBody');
 
   image.src = imageData;
   image.classList.add('carouselImg');
 
-  carItem.appendChild(imageTittle);
-  carItem.appendChild(imageBody);
-  carItem.appendChild(image);
-  carousel.appendChild(carItem);
+  repoLink.href = linkData;
+  repoLink.classList.add('carouselLink', 'btn', 'flex', 'flex-ai-c', 'flex-jc-sb');
+  repoLink.innerHTML = 'link';
 
+
+  carItem.appendChild(imageTittle);
+  carItem.appendChild(image);
+  carItem.appendChild(imageBody); 
+  carItem.appendChild(repoLink);
+  carousel.appendChild(carItem);
 }
+
 
 
 

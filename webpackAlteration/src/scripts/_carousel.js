@@ -43,3 +43,14 @@ function scrollToHorizontal(index, obj) {
         behavior: 'smooth',
     });
 }
+
+export function carouselHeaderBodyWidth(){
+    const carouselItems = document.querySelectorAll('.carouselItem');
+    carouselItems.forEach(item => {
+      const carHeader = item.querySelector('.carouselHeader');
+      const carBody = item.querySelector('.carouselBody');
+      const image = getComputedStyle(item.querySelector('img'));
+      carHeader.style.width = carBody.style.width = image.width;
+      console.log(image.width);
+    })
+  }
