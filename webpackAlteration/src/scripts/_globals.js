@@ -28,7 +28,6 @@ export async function DOMContentLoaded(){
       // Your JavaScript code here
       breakpoints.mediumBreakpoint = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--medium-breakpoint-up')) * 16;
       breakpoints.largeBreakpoint = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--large-breakpoint-up')) * 16;
-      carFun.carouselHeaderBodyWidth();
       resolve();
     });
   });
@@ -42,7 +41,6 @@ headerCopy.classList.add('disable-transition');
 
 // initialized data structures
 navLinks.forEach(link => {
-    console.log(link.getAttribute('href'));
     const targetSection = document.querySelector('#' + link.getAttribute('href'));
     headerPositions[targetSection.offsetTop + targetSection.offsetHeight] =targetSection.id;
     link.addEventListener('click', function(event) {
@@ -89,40 +87,41 @@ const carouselData = {
     'link': ''
   }
 }
+export async function initializeCarouselItems(){
+  for (const key in carouselData) {
+    const carItem = document.createElement('div');
+    const imageTittle = document.createElement('h3');
+    const imageBody = document.createElement('h3');
+    const image = document.createElement('img');
+    const repoLink = document.createElement('a');
+    carItem.classList.add('carouselItem');
 
-for (const key in carouselData) {
-  const carItem = document.createElement('div');
-  const imageTittle = document.createElement('h3');
-  const imageBody = document.createElement('h3');
-  const image = document.createElement('img');
-  const repoLink = document.createElement('a');
-  carItem.classList.add('carouselItem');
+    const tittleData = key;
+    const data = carouselData[key];
+    const imageData = data['image'];
+    const descriptionData = data['description'];
+    const linkData = data['link'];
 
-  const tittleData = key;
-  const data = carouselData[key];
-  const imageData = data['image'];
-  const descriptionData = data['description'];
-  const linkData = data['link'];
+    imageTittle.textContent = tittleData;
+    imageTittle.classList.add('carouselHeader');
 
-  imageTittle.textContent = tittleData;
-  imageTittle.classList.add('carouselHeader');
+    imageBody.innerHTML = descriptionData;
+    imageBody.classList.add('carouselBody');
 
-  imageBody.innerHTML = descriptionData;
-  imageBody.classList.add('carouselBody');
+    image.src = imageData;
+    image.classList.add('carouselImg');
 
-  image.src = imageData;
-  image.classList.add('carouselImg');
-
-  repoLink.href = linkData;
-  repoLink.classList.add('carouselLink', 'btn', 'flex', 'flex-ai-c', 'flex-jc-sb');
-  repoLink.innerHTML = 'link';
+    repoLink.href = linkData;
+    repoLink.classList.add('carouselLink', 'btn');
+    repoLink.innerHTML = 'link';
 
 
-  carItem.appendChild(imageTittle);
-  carItem.appendChild(image);
-  carItem.appendChild(imageBody); 
-  carItem.appendChild(repoLink);
-  carousel.appendChild(carItem);
+    carItem.appendChild(imageTittle);
+    carItem.appendChild(image);
+    carItem.appendChild(imageBody); 
+    carItem.appendChild(repoLink);
+    carousel.appendChild(carItem);
+  }
 }
 
 
