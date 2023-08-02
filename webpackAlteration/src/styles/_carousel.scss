@@ -1,6 +1,4 @@
-#carousel {
-  // padding: 15px;
-}
+
 
 .carouselItem {
   flex: 0 0 100%;
@@ -8,8 +6,8 @@
   width: 260;
   transition: transform 0.3s ease-in-out;
   position: relative; /* Add position relative to respect its parent container */
-  padding-left: 20%;
-  padding-right: 20%;
+  padding-left: 10%;
+  padding-right: 10%;
 
   @include breakpoint-up(medium) {
     flex: 0 0 calc(100% / 3);
@@ -40,6 +38,9 @@
   margin-bottom: 5px;
   overflow-x: auto;
   background-color: black;
+  @include breakpoint-up(large){
+    font-size: medium;
+  }
 
 }
 
@@ -92,21 +93,16 @@
   &:hover{
     opacity: 1;
   }
-
-
 }
 
 .carouselArrows {
-  // display: flex;
-  // justify-content: space-between;
   align-items: center;
   margin-top: 10px;
-  height: 40px;
-  padding: 20px;
+  padding: 10px;
   border: 3px solid black;
   font-size: x-large;
   font-style: oblique;
-  // background-color: blue;
+  border-radius: 15px;
 }
 
 .arrowContains {
@@ -124,7 +120,4 @@
   border: none;
   cursor: pointer;
 }
-  
-.carouselArrows button:hover {
-  color: #007bff;
-}
+

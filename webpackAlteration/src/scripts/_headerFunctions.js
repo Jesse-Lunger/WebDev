@@ -56,7 +56,7 @@ export async function closeHeaderCopy(objectCopy, originalPositions) {
 }
 
 export function initializeHeaderHamburgerBtn(){
-    globals.header.addEventListener('click', async function(event){
+    globals.header.querySelector('#btnHamburger').addEventListener('click', async function(event){
         event.preventDefault();
         globals.body.classList.add('noscroll');
         console.log('header clicked');
@@ -64,7 +64,7 @@ export function initializeHeaderHamburgerBtn(){
         await openHeaderCopy(globals.headerCopy, globals.originalPositions, globals.header);
     });
   
-    globals.headerCopy.addEventListener('click', async function(event) {
+    globals.headerCopy.querySelector('#btnHamburgerCopy').addEventListener('click', async function(event) {
         event.preventDefault();
         console.log('Hamburger menu clicked');
         await closeHeaderCopy(globals.headerCopy,  globals.originalPositions);

@@ -40,14 +40,10 @@ p {
     padding-right: 6rem;
     padding-left: 6rem;
 
-    padding-top: calc($headerHeightMinimized /2) - 1;
-    padding-bottom: calc($headerHeightMinimized /2);
 
     @include breakpoint-up(large) {
       padding-right: 6rem;
       padding-left: 6rem;
-      padding-top: calc($headerHeightFullScreen /2) - 1;
-      padding-bottom: calc($headerHeightFullScreen /2);
     }
   }
   &--pContent {
@@ -76,6 +72,12 @@ p {
   &-jc-c {
     justify-content: center;
   }
+  &-fd-c{
+    flex-direction: column;
+  }
+  &-jc-sa {
+    justify-content: space-around;
+  }
 }
 
 .btn {
@@ -88,6 +90,12 @@ p {
   font-size: 16px;
   border: 3px solid $brightCyan;
   cursor: pointer;
+}
+
+.hide-for-small {
+  @include breakpoint-down(small){
+    display: none;
+  }
 }
 
 .hide-for-mobile {
@@ -108,4 +116,15 @@ p {
 
 .visible {
   display: block;
+}
+
+.thickLine {
+  display: inline-block;
+  width: 100%;
+  height: 5px; /* Increase the height to make the line thicker */
+  background-color: black;
+}
+
+.dashedLine {
+  border: 1px dashed black; /* Add a dashed border style */
 }

@@ -85,6 +85,5 @@ export function carouselArrowHeight(){
         const image = getComputedStyle(carouselItems.querySelector('img'));
         arrow.style.height = image.height;
     })
-    console.log(carouselArrows);
 
 }

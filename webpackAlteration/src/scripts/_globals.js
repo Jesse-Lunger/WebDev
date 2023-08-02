@@ -36,7 +36,10 @@ export async function DOMContentLoaded(){
 
 
 export const headerCopy = copyObject(header);
+console.log(headerCopy.id);
 headerCopy.querySelector('#btnHamburger').id = 'btnHamburgerCopy';
+console.log(headerCopy.id);
+
 headerCopy.classList.add('disable-transition');
 
 // initialized data structures
@@ -114,7 +117,6 @@ export async function initializeCarouselItems(){
     repoLink.href = linkData;
     repoLink.classList.add('carouselLink', 'btn');
     repoLink.innerHTML = 'link';
-
 
     carItem.appendChild(imageTittle);
     carItem.appendChild(image);
