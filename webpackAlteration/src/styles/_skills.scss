@@ -1,0 +1,53 @@
+
+
+.skill {
+	&__grid {
+		display: grid;
+        grid-template-columns: repeat(2, 1fr);
+		gap: 1.875rem;
+
+        @include breakpoint-up(medium) {
+			grid-template-columns: repeat(4, 1fr);
+		}
+
+	}
+
+	&__item {
+
+        border: 3px solid black;
+        display: flex;
+        width: 100%;
+		border-radius: 15px;
+		overflow: hidden;
+		background-color: black;
+		box-shadow: 0px 30px 30px rgba(0, 0, 0, 0.15);
+		transition: all 150ms ease-in-out;
+
+	}
+
+	&__rating {
+        width: 65%;
+        gap: 5px;
+        height: 100%;
+        max-height: $skillFlexHeight;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center center;
+        background-color: white;
+
+	}
+
+    &__ratingStar {
+        display: inline-block;
+        background-color: $brightCyan;
+        width: 10px;
+        height: 10px;
+    }
+
+	&__text {
+        width: 35%;
+        max-height: $skillFlexHeight;
+		color: white;
+        justify-self: end;
+	}
+}

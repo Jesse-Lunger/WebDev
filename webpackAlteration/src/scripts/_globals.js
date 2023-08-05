@@ -123,6 +123,7 @@ export async function initializeCarouselItems(){
     carItem.appendChild(imageBody); 
     carItem.appendChild(repoLink);
     carousel.appendChild(carItem);
+    carItem.style.zIndex = '1';
   }
 }
 

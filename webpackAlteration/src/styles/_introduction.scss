@@ -5,32 +5,36 @@
     @include breakpoint-down(small){
         flex-direction: column;
     }
+    padding-bottom: 10px;
 }
 
 
   
 .contactContainer {
-    width: 50%;
-    @include breakpoint-down(small) {
-        width: 100%;
-        padding-left: 0px;
-    }
+    width: 100%;
+    padding: 2%;
+    height: 200px;
+    background-image: linear-gradient($lightGreen, transparent);
+
+    color: $darkGrey;
+    padding: auto;
 }
 
 .coverImgContainer {
     width: 50%;
-    max-width: 300px;
-    padding: 5%;
-    @include breakpoint-down(small) {
-        width: 100%;
+    height: auto;
+    padding: 2%;
+    max-width: 400px;
+    @include breakpoint-down(small){
+        width: 75%;
     }
+
 }
   
   
 .coverImg {
 transition: flex 0.3s ease-in-out;
 border-radius: 15px;
-max-height: 500px;
 display: flex;
 align-items: center;
 width: 100%;

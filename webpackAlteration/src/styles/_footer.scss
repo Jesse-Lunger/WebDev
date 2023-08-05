@@ -1,0 +1,38 @@
+.footer {
+    &--container {
+        justify-content: space-between;
+        background-color: $darkGrey;
+        height: 200px;
+        width: 100%;
+        color: white;
+        border-top: 8px solid black;
+        display: flex;
+    }
+
+    &--subContainer {
+        display: flex;
+        width: 50%;
+        flex-direction: column;
+
+    }
+
+    &--body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+
+    }
+
+    &--tittle {
+        padding: 2%;
+        display: flex;
+        width: 100%;
+        align-items: center;
+        padding-left: 10%
+        
+    }
+
+
+
+}

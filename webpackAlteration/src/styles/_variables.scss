@@ -2,6 +2,8 @@
 $headerHeightFullScreen: 5rem;
 $headerHeightMinimized: 4rem;
 
+$skillFlexHeight: 45px;
+
 
 $medium-breakpoint-up: 40em;
 $large-breakpoint-up: 64em;
@@ -22,9 +24,10 @@ $large-breakpoint-down: 87.4375em;
 
 // Colors
 $darkBlue: hsl(233, 26%, 24%);
-$limeGreen: hsl(136, 65%, 51%);
-$brightCyan: hsl(192, 70%, 51%);
-$grayishBlue: hsl(233, 8%, 62%);
+$lightGreen:  rgb(74, 191, 138);
+$brightCyan: hsl(46, 84%, 71%);
+$darkGrey: rgb(79, 79, 92);
+$grayishBlue: hsl(0, 0%, 90%);
 $lightGrayishBlue: hsl(220, 16%, 96%);
 $veryLightGray: hsl(0, 0%, 98%);
 $white: hsl(0, 0%, 100%);

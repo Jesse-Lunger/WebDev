@@ -64,34 +64,34 @@ window.addEventListener('resize', async function() {
 });
 
 
-var position = 0;
-function showTabs() {
-  var nextHeaderBottom = globals.headerPositionList[position];
-  if (window.scrollY > nextHeaderBottom) {
-    globals.headerTabs.classList.add('fade-in');
-    globals.headerTabs.classList.remove('fade-out');
-    globals.navLinks[position].classList.add('fade-in');
-    globals.navLinks[position].classList.remove('fade-out');
-    if (position + 1 < globals.navLinks.length && window.scrollY > globals.headerPositionList[position + 1]){
-      position += 1;
-    }
-  }
-  else if (0 < position){
-    globals.navLinks[position].classList.remove('fade-in');
-    globals.navLinks[position].classList.add('fade-out');
-    position -= 1;
-  }
-  else {
-    globals.headerTabs.classList.remove('fade-in');
-    globals.headerTabs.classList.add('fade-out');
-    globals.navLinks[position].classList.remove('fade-in');
-    globals.navLinks[position].classList.add('fade-out');
-  }
-}
+// var position = 0;
+// function showTabs() {
+//   var nextHeaderBottom = globals.headerPositionList[position];
+//   if (window.scrollY > nextHeaderBottom) {
+//     globals.headerTabs.classList.add('fade-in');
+//     globals.headerTabs.classList.remove('fade-out');
+//     globals.navLinks[position].classList.add('fade-in');
+//     globals.navLinks[position].classList.remove('fade-out');
+//     if (position + 1 < globals.navLinks.length && window.scrollY > globals.headerPositionList[position + 1]){
+//       position += 1;
+//     }
+//   }
+//   else if (0 < position){
+//     globals.navLinks[position].classList.remove('fade-in');
+//     globals.navLinks[position].classList.add('fade-out');
+//     position -= 1;
+//   }
+//   else {
+//     globals.headerTabs.classList.remove('fade-in');
+//     globals.headerTabs.classList.add('fade-out');
+//     globals.navLinks[position].classList.remove('fade-in');
+//     globals.navLinks[position].classList.add('fade-out');
+//   }
+// }
 
-window.onscroll = function() {
-    showTabs();
-};
+// window.onscroll = function() {
+//     showTabs();
+// };
 
 
 

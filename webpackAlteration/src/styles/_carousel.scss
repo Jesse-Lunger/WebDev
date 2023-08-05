@@ -67,25 +67,27 @@
   z-index: 2;
   justify-content: right;
   justify-content: space-between;
-  top: 15%;
+  top: 16%;
   display: flex;
   position: absolute;
   font-size: medium;
   background-color: black;
   color: white;
-  font-size: large;
+  font-size: medium;
   opacity: 0; /* Set the initial opacity to 0 */
   transition: all 500ms ease-in-out;
   &:hover{
     opacity: 1;
   }
   border: 3px solid $brightCyan;
+  box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.15);
+
 
 }
 
 .carouselLink {
   position: absolute;
-  bottom: 5%;
+  bottom: 2%;
   left: 50%;
   transform: translate(-50%, -50%);
   opacity: 0;
@@ -106,7 +108,7 @@
 }
 
 .arrowContains {
-  background-color: $brightCyan;
+  background-color: $lightGreen;
 }
 
 .arrowNotContains {
