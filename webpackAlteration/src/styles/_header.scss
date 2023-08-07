@@ -107,6 +107,8 @@
   }
 }
 
+
+
 .hdrLogoContainer {
   width: 100%;
 }
@@ -118,21 +120,20 @@
   @include breakpoint-down(medium){
     justify-content: right;
   }
-
   a {
-    
     text-decoration: none;
     padding: 0.625rem;
     color: white;
     text-align: center;
     transition: all ease-in-out 300ms;
     &:hover{
-
-      color: $lightGreen;
+      color: black;
       text-decoration: underline;
     }
   }
+}
 
+.hdrOpt {
 
 }
 

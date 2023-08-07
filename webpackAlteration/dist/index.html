@@ -14,7 +14,7 @@
       <title>Jesse Lunger | Website</title>
   
   
-  <script defer src="bundle092dadb1175958c74353.js"></script></head>
+  <script defer src="bundle19120b739e8298ee20dd.js"></script></head>
   <body>
 
     <div class="flex flex-jc-sb flex-ai-c introductionContainer">
@@ -30,65 +30,59 @@
       </div> -->
 
     </div>
-
+  
+  <div id="about"></div>
   <header class="header sticky" id="header">
     <nav class="container container--horizontalPad flex flex-jc-sb flex-ai-c">
-      <div class="container--pHeader">
+      <div class="container--pHeader hdrLogoContainer">
         <h3>JL</h3>
       </div>
 
-      <div class="flex  flex-jc-sa">
-      <div class="hide-for-desktop" id="btnHamburger">
-        <a  href="#" class="header__toggle">
-          <span></span>
-          <span></span>
-          <span></span>
-        </a> 
-      </div>
+      <div class=" hdrBodyContainer">
 
-      <!-- <div class="hide-for-mobile">
-        <a class="" href="">my button</a>
-      </div>
-      <div class="hide-for-mobile">
-        <a class="" href="">my button</a>
-      </div> -->
-      <div class="hide-for-mobile">
-        <a class="" href="#skills">Skills</a>
-      </div>
+        <div class="hide-for-desktop" id="btnHamburger">
+          <a  href="#" class="header__toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </a> 
+        </div>
+
+        <a class="hdrOpt hide-for-mobile" href="#about">About</a>
+        <a class="hdrOpt hide-for-mobile" href="#projects">Projects</a>
+        <a class="hdrOpt hide-for-mobile" href="#skills">Skills</a>
+        <a class="hdrOpt hide-for-mobile" href="#reasons">Experience</a>
+        <a class="hdrOpt hide-for-mobile" href="#contact">Contact</a>
 
 
-      <div class="header__menu has-fade hide-for-desktop">
-        <a href="">Home</a>
-        <a href="">About</a>
-        <a href="">Contact</a>
-        <a href="">Blog</a>
-        <a href="">Careers</a>
+
+        <div class="header__menu has-fade hide-for-desktop" >
+          <a class="minHdrOpt" href="#about">About</a>
+          <a class="minHdrOpt" href="#projects">Projects</a>
+          <a class="minHdrOpt" href="#skills">Skills</a>
+          <a class="minHdrOpt" href="#reasons">Experience</a>
+          <a class="minHdrOpt" href="#contact">Contact</a>
+        </div>
       </div>
     </nav>
-  </div>
   </header>
 
 
   
-  <div class="container container--pContent">
-  <div class="hero" id="about">
+  <div class="container container--pContent" >
+  <div class="hero">
     <div class="heroBody">
       <h3 class="indent">About me</h3>
       <p class="doubleSpaced">
-        Greetings, and thanks for visiting my Website! My name is 
-        Jesse Lunger. I grew up and lived in the Eugene Portland Oregon
-        area my entire life working in health care, food service, education
-        and home improvment. I recently got a education in computer science
-        and am working to break my way into professional software development.         
-        I'm want to connect with motivated individuals or companies looking to hire a software
-        developer for long term employment or temporary work. 
+        Greetings, and thanks for visiting my website! I'm Jesse Lunger. I grew up and lived in the Eugene-Portland, Oregon area my entire life, working in healthcare, food service, education, and home improvement. Recently, I obtained an education in computer science and am striving to enter the field of professional software development. I'm interested in connecting with motivated individuals or companies seeking a software developer for long-term employment or temporary work.
+
       </p>
     </div>
-    <img class="heroImg" src="./testImage3.jpg" alt="">
+    <img class="heroImg" src="" alt="">
   </div>
 </div>
 
-  <div class="uniformPadding"></div>
+  <div class="uniformPadding" id="projects"></div>
   <h1 class="container container--horizontalPad">Projects</h1>
   <div class="container container--horizontalPad">
     <span class="dividingLine"></span>
@@ -101,15 +95,16 @@
   </div>
 
 
-  <div class="uniformPadding" id=""></div>
+  <div class="uniformPadding" id="skills"></div>
       <h1 class="container container--horizontalPad">SKILLS</h1>
   <div class="container container--horizontalPad">
     <span class="dividingLine"></span>
   </div>
 
   
-  <div class="container container--pContent">
+  <div class="container container--pContent" >
     <div class="skill__grid">
+
       <div class="skill__item container flex flex-jc-sb">
         <div class="skill__text flex flex-ai-c flex-jc-c">
           Python
@@ -201,7 +196,7 @@
 
 
 
-  <div class="uniformPadding"></div>
+  <div class="uniformPadding" id="reasons"></div>
     <h1 class="container container--horizontalPad">Why Choose Me?</h1>
   <div class="container container--horizontalPad">
     <span class="dividingLine"></span>
@@ -209,15 +204,15 @@
 
 
   
-  <section class="reasons">
+  <section class="reasons" >
     <div class="reasons__content container container--pContent">
       <div class="reasons__grid">
 
 
         <a href="#" class="reasons__item">
-          <div
+          <div 
+            id="reason1"
             class="reasons__image"
-            style="background-image: url('./testImage1.jpg')"
           ></div>
           <div class="reasons__text">
             <div class="reasons__title">
@@ -232,9 +227,9 @@
         </a>
 
         <a href="#" class="reasons__item">
-          <div
+          <div 
+            id="reason2"
             class="reasons__image"
-            style="background-image: url('./testImage1.jpg')"
           ></div>
           <div class="reasons__text">
             <div class="reasons__title">
@@ -251,8 +246,8 @@
 
         <a href="#" class="reasons__item">
           <div
+            id="reason3"
             class="reasons__image"
-            style="background-image: url('./testImage1.jpg')"
           ></div>
           <div class="reasons__text">
             <div class="reasons__title">
@@ -265,13 +260,11 @@
             </div>
           </div>
         </a>
-
-
       </div>
     </div>
   </section>
 
-  <div class="uniformPadding"></div>
+  <div class="uniformPadding" id="contact"></div>
 
 
   <div class="footer footer--container">
@@ -280,7 +273,7 @@
         <h3>Contact:</h3>
       </div>
       <div class="footer--body">
-        jeselunger@gmail.com
+        <h3>jlunger@uoregon.edu</h3>
       </div>    </div>
     <div class="footer--subContainer">
       <div class="footer--tittle">

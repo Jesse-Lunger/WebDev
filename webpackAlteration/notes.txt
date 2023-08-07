@@ -18,3 +18,5 @@ npm i -D babel-loader @babel/core @babel/preset-env
 npm i -D webpack-bundle-analyzer
 
 <a target="_blank" href="https://icons8.com/icon/44091/resume">Resume</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+
+npm install -g npm   //update npm

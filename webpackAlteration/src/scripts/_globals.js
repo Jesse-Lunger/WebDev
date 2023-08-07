@@ -67,9 +67,25 @@ import spectrogram from '../images/jpgs/carousel/spectrogram.jpg';
 import artBroker from '../images/jpgs/carousel/artBroker.jpg';
 import webDev from '../images/jpgs/carousel/webDev.jpg';
 
+// Reason Images
+import ufologo from '../images/jpgs/Reasons/ufoLogo.svg';
+import personal from '../images/jpgs/Reasons/personal.jpg';
+import experience from '../images/jpgs/Reasons/experience.jpg';
+
+
 const profileImgHandle = body.querySelector('.heroImg');
-console.log(profileImgHandle);
+const educationImgHandle = document.getElementById('reason1');
+const personalImgHandle = document.getElementById('reason2');
+const experienceImgHandle = document.getElementById('reason3'); // Correct the typo "reaon3" to "reason3"
+
+educationImgHandle.style.backgroundColor = "white";
+
+
+
 profileImgHandle.src = profileImg;
+educationImgHandle.style.backgroundImage = `url(${ufologo})`; // Use backgroundImage property with 'url()' syntax
+personalImgHandle.style.backgroundImage = `url(${personal})`; // Use backgroundImage property with 'url()' syntax
+experienceImgHandle.style.backgroundImage = `url(${experience})`; // Use backgroundImage property with 'url()' syntax
 
 const carouselData = {
   'unity': {

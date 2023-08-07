@@ -330,7 +330,7 @@ a.footer--body {
   transition: all ease-in-out 300ms;
 }
 .hdrBodyContainer a:hover {
-  color: rgb(70, 75, 117);
+  color: black;
   text-decoration: underline;
 }
 

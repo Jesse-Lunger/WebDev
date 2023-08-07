@@ -64,7 +64,6 @@ window.addEventListener('resize', async function() {
 });
 
 const hOptions = document.querySelectorAll('.minHdrOpt');
-
 hOptions.forEach(option => {
   option.addEventListener('click', async function(){
     if (globals.headerCopy.classList.contains('open')){
