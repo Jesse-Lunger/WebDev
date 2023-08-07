@@ -63,6 +63,26 @@ window.addEventListener('resize', async function() {
   }
 });
 
+const hOptions = document.querySelectorAll('.minHdrOpt');
+
+hOptions.forEach(option => {
+  option.addEventListener('click', async function(){
+    if (globals.headerCopy.classList.contains('open')){
+      event.preventDefault();
+      await hdrFuncs.closeHeaderCopy(globals.headerCopy, globals.originalPositions);
+      await hdrFuncs.openHeader(globals.header);
+      globals.body.classList.remove('noscroll'); 
+      setTimeout(() => {
+        window.location.href = option.href; // Navigate to the linked URL after the delay
+      }, 150);
+    }
+  });
+});
+
+
+// hMenu.addEventListener('click', function(){
+
+// })
 
 // var position = 0;
 // function showTabs() {

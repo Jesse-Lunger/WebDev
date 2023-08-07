@@ -68,26 +68,27 @@ const carouselData = {
   'unity': {
     'image': fight,
     'description': '<pre>Experience: <br> Blender <br> C# <br> Unity',
-    'link': ''
+    'link': 'https://github.com/Jesse-Lunger/Fight/tree/main'
   },
   'APP Development': {
     'image': ARA,
     'description': '<pre>Experience: <br> Python <br> Tkinter <br> SQL',
+    'link': 'https://github.com/Jesse-Lunger/ARA/tree/main'
   },
   'ArtBroker': {
     'image': artBroker,
     'description': '<pre>Experience: <br> PHP <br> html <br> SQL',
-    'link': ''
+    'link': 'https://github.com/Jesse-Lunger/DatabaseWork'
   },
   'Sound Recognition': {
     'image': spectrogram,
     'description': '<pre>Experience: <br> Deep Learning <br> Pytorch',
-    'link': ''
+    'link': 'https://github.com/Jesse-Lunger/SoundRecognition/tree/master'
   },
   'Web Development': {
     'image': webDev,
     'description': '<pre>Experience: <br> JavaScript <br> CSS <br> Html <br> WebPack',
-    'link': ''
+    'link': 'https://github.com/Jesse-Lunger/WebDev/tree/main'
   }
 }
 export async function initializeCarouselItems(){
@@ -116,7 +117,7 @@ export async function initializeCarouselItems(){
 
     repoLink.href = linkData;
     repoLink.classList.add('carouselLink', 'btn');
-    repoLink.innerHTML = 'link';
+    repoLink.innerHTML = 'Repo';
 
     carItem.appendChild(imageTittle);
     carItem.appendChild(image);
@@ -126,6 +127,11 @@ export async function initializeCarouselItems(){
     carItem.style.zIndex = '1';
   }
 }
+
+
+
+
+
 
 
 

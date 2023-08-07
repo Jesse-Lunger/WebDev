@@ -21,7 +21,6 @@
 
   transition: all 500ms ease-in-out;
   height: $headerHeightMinimized;
-  border-radius: 15px;
   border: 3px solid black;
 
   @include breakpoint-up(large) {

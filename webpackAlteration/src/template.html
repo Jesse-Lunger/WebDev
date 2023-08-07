@@ -30,13 +30,15 @@
       </div> -->
 
     </div>
-
+  
+  <div id="about"></div>
   <header class="header sticky" id="header">
     <nav class="container container--horizontalPad flex flex-jc-sb flex-ai-c">
-      <div >
+      <div class="container--pHeader">
         <h3>JL</h3>
       </div>
 
+      <div class="flex  flex-jc-sa">
       <div class="hide-for-desktop" id="btnHamburger">
         <a  href="#" class="header__toggle">
           <span></span>
@@ -45,31 +47,42 @@
         </a> 
       </div>
 
-      <div class="hide-for-mobile">
-        <a class="btn" href="#">my button</a>
+      <!-- <div class="hide-for-mobile">
+        <a class="" href="">my button</a>
       </div>
       <div class="hide-for-mobile">
-        <a class="btn" href="#">my button</a>
+        <a class="" href="">my button</a>
+      </div> -->
+      <div class="hide-for-mobile">
+        <a class="hdrOpt" href="#about">About</a>
       </div>
       <div class="hide-for-mobile">
-        <a class="btn" href="#">my button</a>
+        <a class="hdrOpt" href="#projects">Projects</a>
+      </div>
+      <div class="hide-for-mobile">
+        <a class="hdrOpt" href="#skills">Skills</a>
+      </div>
+      <div class="hide-for-mobile">
+        <a class="hdrOpt" href="#contact">Contact</a>
       </div>
 
 
-      <div class="header__menu has-fade hide-for-desktop">
-        <a href="">Home</a>
-        <a href="">About</a>
-        <a href="">Contact</a>
-        <a href="">Blog</a>
-        <a href="">Careers</a>
+      <div class="header__menu has-fade hide-for-desktop" >
+        <div class="minHdrOpt">
+          <a  href="about">About</a>
+        </div>
+        <a class="minHdrOpt" href="#projects">Projects</a>
+        <a class="minHdrOpt" href="#skills">Skills</a>
+        <a class="minHdrOpt" href="#contact">Contact</a>
       </div>
     </nav>
+  </div>
   </header>
 
 
   
   <div class="container container--pContent">
-  <div class="hero">
+  <div class="hero" id="about">
     <div class="heroBody">
       <h3 class="indent">About me</h3>
       <p class="doubleSpaced">
@@ -86,7 +99,7 @@
   </div>
 </div>
 
-  <div class="uniformPadding"></div>
+  <div class="uniformPadding" id="projects"></div>
   <h1 class="container container--horizontalPad">Projects</h1>
   <div class="container container--horizontalPad">
     <span class="dividingLine"></span>
@@ -99,14 +112,14 @@
   </div>
 
 
-  <div class="uniformPadding"></div>
+  <div class="uniformPadding" id="skills"></div>
       <h1 class="container container--horizontalPad">SKILLS</h1>
   <div class="container container--horizontalPad">
     <span class="dividingLine"></span>
   </div>
 
   
-  <div class="container container--pContent">
+  <div class="container container--pContent" >
     <div class="skill__grid">
 
       <div class="skill__item container flex flex-jc-sb">
@@ -200,7 +213,7 @@
 
 
 
-  <div class="uniformPadding"></div>
+  <div class="uniformPadding" id="reasons"></div>
     <h1 class="container container--horizontalPad">Why Choose Me?</h1>
   <div class="container container--horizontalPad">
     <span class="dividingLine"></span>
@@ -208,7 +221,7 @@
 
 
   
-  <section class="reasons">
+  <section class="reasons" >
     <div class="reasons__content container container--pContent">
       <div class="reasons__grid">
 
@@ -220,11 +233,11 @@
           ></div>
           <div class="reasons__text">
             <div class="reasons__title">
-              Bachelors in Computer Science
+              Bachelors: Computer Science
             </div>
             <div class="reasons__description">
-              I graudated June 2023 with a wide focus ranging
-              from general computer fundatmentals, game development, databases, 
+              I graudated June 2023 from the University of Oregon. My focued ranged
+              from computer fundatmentals, game development, databases, 
               and cryptography.
             </div>
           </div>
@@ -270,23 +283,24 @@
     </div>
   </section>
 
-  <div class="uniformPadding"></div>
+  <div class="uniformPadding" id="contact"></div>
 
 
   <div class="footer footer--container">
     <div class="footer--subContainer">
       <div class="footer--tittle">
-        tittle1
+        <h3>Contact:</h3>
       </div>
       <div class="footer--body">
-        hello
+        jeselunger@gmail.com
       </div>    </div>
     <div class="footer--subContainer">
       <div class="footer--tittle">
-        tittle2
+        <h3>Website influenced by:</h3>
       </div>
       <div class="footer--body">
-        hello
+        <a href="https://www.youtube.com/@TheCoderCoder">Coder Coder</a>
+        <a href="https://www.youtube.com/@TraversyMedia">Traversy Media</a>
       </div>
       
     </div>

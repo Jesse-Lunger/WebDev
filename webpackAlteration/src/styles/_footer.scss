@@ -1,7 +1,17 @@
+.footer--body a {
+    color: white;
+    text-decoration: none;
+    text-decoration-color: black;
+    &:hover{
+        color: rgb(105, 212, 55);
+    }
+  }
+  
+
 .footer {
     &--container {
         justify-content: space-between;
-        background-color: $darkGrey;
+        background-color: $lightGreen;
         height: 200px;
         width: 100%;
         color: white;
@@ -18,18 +28,19 @@
 
     &--body {
         display: flex;
+        flex-direction: column;
+        height: 20%;
         justify-content: center;
         align-items: center;
-        height: 100%;
-
     }
 
     &--tittle {
         padding: 2%;
         display: flex;
         width: 100%;
+        justify-content: center;
         align-items: center;
-        padding-left: 10%
+
         
     }
 
