@@ -57,12 +57,19 @@ export const headerPositionList = Object.keys(headerPositions);
 headerPositionList.sort((a, b) => a - b);
 export const headerTabs = document.getElementById("headerTabs");
 
-// Images
+// Profile Image
+import profileImg from '../images/jpgs/Reasons/profile.jpg';
+
+// Carousel Images
 import fight from '../images/jpgs/carousel/fight.jpg';
 import ARA from '../images/jpgs/carousel/ARA.jpg';
 import spectrogram from '../images/jpgs/carousel/spectrogram.jpg';
 import artBroker from '../images/jpgs/carousel/artBroker.jpg';
 import webDev from '../images/jpgs/carousel/webDev.jpg';
+
+const profileImgHandle = body.querySelector('.heroImg');
+console.log(profileImgHandle);
+profileImgHandle.src = profileImg;
 
 const carouselData = {
   'unity': {

@@ -293,7 +293,7 @@ a.footer--body {
 .header__menu a {
   display: block;
   padding: 0.625rem;
-  color: hsl(233, 26%, 24%);
+  color: white;
   text-align: center;
 }
 .header__toggle > span {
@@ -306,6 +306,32 @@ a.footer--body {
 }
 .header__toggle > span:not(:last-child) {
   margin-bottom: 5px;
+}
+
+.hdrLogoContainer {
+  width: 100%;
+}
+
+.hdrBodyContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+@media (max-width: 63.9375em) {
+  .hdrBodyContainer {
+    justify-content: right;
+  }
+}
+.hdrBodyContainer a {
+  text-decoration: none;
+  padding: 0.625rem;
+  color: white;
+  text-align: center;
+  transition: all ease-in-out 300ms;
+}
+.hdrBodyContainer a:hover {
+  color: rgb(70, 75, 117);
+  text-decoration: underline;
 }
 
 .disable-transition {

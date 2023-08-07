@@ -34,55 +34,43 @@
   <div id="about"></div>
   <header class="header sticky" id="header">
     <nav class="container container--horizontalPad flex flex-jc-sb flex-ai-c">
-      <div class="container--pHeader">
+      <div class="container--pHeader hdrLogoContainer">
         <h3>JL</h3>
       </div>
 
-      <div class="flex  flex-jc-sa">
-      <div class="hide-for-desktop" id="btnHamburger">
-        <a  href="#" class="header__toggle">
-          <span></span>
-          <span></span>
-          <span></span>
-        </a> 
-      </div>
+      <div class=" hdrBodyContainer">
 
-      <!-- <div class="hide-for-mobile">
-        <a class="" href="">my button</a>
-      </div>
-      <div class="hide-for-mobile">
-        <a class="" href="">my button</a>
-      </div> -->
-      <div class="hide-for-mobile">
-        <a class="hdrOpt" href="#about">About</a>
-      </div>
-      <div class="hide-for-mobile">
-        <a class="hdrOpt" href="#projects">Projects</a>
-      </div>
-      <div class="hide-for-mobile">
-        <a class="hdrOpt" href="#skills">Skills</a>
-      </div>
-      <div class="hide-for-mobile">
-        <a class="hdrOpt" href="#contact">Contact</a>
-      </div>
-
-
-      <div class="header__menu has-fade hide-for-desktop" >
-        <div class="minHdrOpt">
-          <a  href="about">About</a>
+        <div class="hide-for-desktop" id="btnHamburger">
+          <a  href="#" class="header__toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </a> 
         </div>
-        <a class="minHdrOpt" href="#projects">Projects</a>
-        <a class="minHdrOpt" href="#skills">Skills</a>
-        <a class="minHdrOpt" href="#contact">Contact</a>
+
+        <a class="hdrOpt hide-for-mobile" href="#about">About</a>
+        <a class="hdrOpt hide-for-mobile" href="#projects">Projects</a>
+        <a class="hdrOpt hide-for-mobile" href="#skills">Skills</a>
+        <a class="hdrOpt hide-for-mobile" href="#reasons">Experience</a>
+        <a class="hdrOpt hide-for-mobile" href="#contact">Contact</a>
+
+
+
+        <div class="header__menu has-fade hide-for-desktop" >
+          <a class="minHdrOpt" href="#about">About</a>
+          <a class="minHdrOpt" href="#projects">Projects</a>
+          <a class="minHdrOpt" href="#skills">Skills</a>
+          <a class="minHdrOpt" href="#reasons">Experience</a>
+          <a class="minHdrOpt" href="#contact">Contact</a>
+        </div>
       </div>
     </nav>
-  </div>
   </header>
 
 
   
-  <div class="container container--pContent">
-  <div class="hero" id="about">
+  <div class="container container--pContent" >
+  <div class="hero">
     <div class="heroBody">
       <h3 class="indent">About me</h3>
       <p class="doubleSpaced">
@@ -95,7 +83,7 @@
         developer for long term employment or temporary work. 
       </p>
     </div>
-    <img class="heroImg" src="./testImage3.jpg" alt="">
+    <img class="heroImg" src="" alt="">
   </div>
 </div>
 
@@ -227,7 +215,8 @@
 
 
         <a href="#" class="reasons__item">
-          <div
+          <div 
+            id="reason1"
             class="reasons__image"
             style="background-image: url('./testImage1.jpg')"
           ></div>
@@ -244,7 +233,8 @@
         </a>
 
         <a href="#" class="reasons__item">
-          <div
+          <div 
+            id="reason2"
             class="reasons__image"
             style="background-image: url('./testImage1.jpg')"
           ></div>
@@ -263,6 +253,7 @@
 
         <a href="#" class="reasons__item">
           <div
+            id="reason3"
             class="reasons__image"
             style="background-image: url('./testImage1.jpg')"
           ></div>
